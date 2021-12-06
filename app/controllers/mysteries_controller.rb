@@ -1,0 +1,2 @@
+class MysteriesController < ApplicationController
+end
