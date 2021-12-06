@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_012933) do
+ActiveRecord::Schema.define(version: 2021_12_06_021321) do
+
+  create_table "mysteries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.text "discription", null: false
+    t.integer "image_id"
+    t.string "answer", null: false
+    t.integer "answer_image_id"
+    t.text "answer_discription", null: false
+    t.float "difficultty_level", default: 3.0, null: false
+    t.boolean "is_opened", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
