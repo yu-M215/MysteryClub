@@ -1,0 +1,28 @@
+<h2>投稿詳細</h2>
+<div class="offset-1">
+  <h4 class="mb-3"><%= @mystery.title %></h4>
+  <div class="row">
+    <div class="col-4">
+      <%= link_to Refile.attachment_url(@mystery, :image), "data-lightbox":"mystery_img", "data-title":"問題画像" do %>
+        <%= attachment_image_tag @mystery, :image, alt:"No Image", size:"300x200" %>
+      <% end %>
+    </div>
+    <div class="col-6 ml-3">
+      <%= @mystery.discription %>
+    </div>
+  </div>
+  <div class="row mt-3">
+    投稿者：<%= @mystery.user.name %>
+    <span class="ml-5">フォロー</span>
+  </div>
+  <h6>答えはこちら <i class="fas fa-angle-double-down"></i></h6>
+  <div class="answer-box">
+    <p>
+      答え：<%= @mystery.answer %>
+    </p>
+    <P>
+      ～解説～</br>
+      <%= @mystery.answer_discription %>
+    </P>
+  </div>
+</div>
