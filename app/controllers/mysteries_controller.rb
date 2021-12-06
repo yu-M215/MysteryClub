@@ -23,9 +23,17 @@ class MysteriesController < ApplicationController
   end
 
   def edit
+    @mystery = Mystery.find(params[:id])
   end
 
   def update
+    @mystery = Mystery.find(params[:id])
+    if @mystery.update(mystery_params)
+      redirect_to mystery_path(@mystery)
+    else
+      render edit
+      flash[:notice] = "更新処理に失敗しました。"
+    end
   end
 
   def destroy
