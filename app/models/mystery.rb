@@ -7,6 +7,7 @@ class Mystery < ApplicationRecord
   validates :title,:discription,:answer,:answer_discription, presence: true
 
   # 画像アップ用のメソッド
-  attachment :image, :answer_image
+  attachment :image
+  attachment :answer_image
 
 end

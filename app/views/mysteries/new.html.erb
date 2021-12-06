@@ -1,6 +1,6 @@
 <h2>謎解き投稿フォーム</h2>
 
-<%= form_with model: @mystery, local:true, do |f| %>
+<%= form_with model: @mystery, local:true do |f| %>
   <label>タイトル</label>
   <%= f.text_field :title %>
   <label>問題画像</label>

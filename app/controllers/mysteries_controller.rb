@@ -34,7 +34,7 @@ class MysteriesController < ApplicationController
   private
 
   def mystery_params
-    params.require(:mystery).permit(:title,:discription,:image,:answer,:answer_image,:answer_discription,:defficulty_level,:is_opened)
+    params.require(:mystery).permit(:title,:discription,:image,:answer,:answer_image,:answer_discription,:difficulty_level,:is_opened)
   end
 
 end
