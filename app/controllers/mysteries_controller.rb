@@ -21,5 +21,4 @@ class MysteriesController < ApplicationController
   def destroy
   end
 
-
 end
