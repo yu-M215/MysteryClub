@@ -1,21 +1,41 @@
-<h2>謎解き投稿フォーム</h2>
+<h2 class="mb-5">謎解き投稿フォーム</h2>
 
+<div class="offset-1">
 <%= form_with model: @mystery, local:true do |f| %>
-  <label>タイトル</label>
-  <%= f.text_field :title %>
-  <label>問題画像</label>
-  <%= f.attachment_field :image %>
-  <label>問題文</label>
-  <%= f.text_area :discription %>
-  <label>答え</label>
-  <%= f.text_field :answer %>
-  <label>解説</label>
-  <%= f.text_area :answer_discription %>
-  <label>解説用画像</label>
-  <%= f.attachment_field :answer_image %>
-  <label>難易度</label>
-  <%= f.submit "投稿！！" %>
+  <div class="form-group row">
+    <label class="col-2">タイトル</label>
+    <%= f.text_field :title, autofocus: true, class:"form-control col-5" %>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2">問題画像</label>
+    <%= f.attachment_field :image, class:"form-control-file col-5" %>
+  </div>
+  <div class="form-group row">
+    <label class="col-2">問題文</label>
+    <%= f.text_area :discription, class:"form-control col-7" %>
+  </div>
+  <div class="form-group row">
+    <label class="col-2">答え</label>
+    <%= f.text_field :answer, class:"form-control col-5" %>
+  </div>
+  <div class="form-group row">
+    <label class="col-2">解説</label>
+    <%= f.text_area :answer_discription, class:"form-control col-7" %>
+  </div>
+  <div class="form-group row">
+    <label class="col-2">解説用画像</label>
+    <%= f.attachment_field :answer_image, class:"form-control-file col-4" %>
+  </div>
+  <div class="form-group row" id="difficulty_level">
+    <label class="col-2">難易度</label>
+  </div>
+
+  <div class="action">
+    <%= f.submit "投稿！！", class:"btn btn-success col-2 offset-5 mt-5" %>
+  </div>
 <% end %>
+</div>
 
 <script>
   $('#difficulty_level').raty({

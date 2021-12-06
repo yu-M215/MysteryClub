@@ -1,0 +1,29 @@
+<h2>投稿一覧</h2>
+
+<div class="card-deck">
+  <% @mysteries.each do |mystery| %>
+    <div class="card">
+      <%= attachment_image_tag mystery, :image, class:"card-img-top", alt:"Card image" %>
+      <div class="card-body">
+        <h6 class="card-title">
+          <%= mystery.title %>
+        </h6>
+        <p class="difficulty_level" data-score="<%= mystery.difficulty_level %>">
+        <%= link_to "詳細", mystery_path(mystery.id) %>
+      </div>
+      <div class="card-footer">
+        <%= mystery.user.name %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $('.difficulty_level').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
