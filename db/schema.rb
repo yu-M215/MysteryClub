@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_024116) do
+ActiveRecord::Schema.define(version: 2021_12_06_031427) do
 
   create_table "mysteries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_12_06_024116) do
     t.string "answer", null: false
     t.string "answer_image_id"
     t.text "answer_discription", null: false
-    t.float "difficultty_level", default: 3.0, null: false
+    t.float "difficulty_level", default: 3.0, null: false
     t.boolean "is_opened", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
