@@ -22,6 +22,7 @@
 //= require turbolinks
 //= require_tree .
 
+//謎解き詳細ページの答え表示切替
 $(document).ready(function () {
   $(function() {
       $('#answer-button').on('click', function() {
