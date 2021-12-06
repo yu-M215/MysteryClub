@@ -21,3 +21,11 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+  $(function() {
+      $('#answer-button').on('click', function() {
+          $('#answer-box').toggle();
+      });
+  });
+});
