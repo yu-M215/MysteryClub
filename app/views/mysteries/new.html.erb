@@ -16,3 +16,12 @@
   <label>難易度</label>
   <%= f.submit "投稿！！" %>
 <% end %>
+
+<script>
+  $('#difficulty_level').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'mystery[difficulty_level]' //登録するモデル名とカラム名を記述
+  });
+</script>
