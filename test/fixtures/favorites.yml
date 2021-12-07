@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mystery_id: 1
+  user_id: 1
+
+two:
+  mystery_id: 1
+  user_id: 1
