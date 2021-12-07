@@ -3,7 +3,7 @@ class MysteriesController < ApplicationController
   before_action :set_mystery, only:[:show,:edit,:update,:destroy]
 
   def index
-    @mysteries = Mystery.all
+    @mysteries = Mystery.where(is_opened: true)
   end
 
   def show
@@ -38,6 +38,8 @@ class MysteriesController < ApplicationController
 
   def destroy
     @mystery.destroy
+    redirect_to mysteries_path
+    flash[:notice] = "投稿を削除しました。"
   end
 
   private
