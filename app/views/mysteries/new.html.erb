@@ -1,3 +1,5 @@
-<h2 class="mb-5">謎解き投稿フォーム</h2>
-<%= render 'layouts/error', model: @mystery %>
+<div class="row d-flex">
+  <h2 class="mb-3">謎解き投稿フォーム</h2>
+  <%= render 'layouts/error', model: @mystery %>
+</div>
 <%= render 'form', mystery: @mystery, btn_string: "投稿" %>
