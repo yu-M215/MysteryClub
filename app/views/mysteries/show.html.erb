@@ -1,17 +1,27 @@
 <h2>投稿詳細</h2>
 <div class="offset-1">
-  <h4 class="mb-3"><%= @mystery.title %></h4>
+  <div class="row d-flex">
+    <h4 class="mb-3"><%= @mystery.title %></h4>
+    難易度：<p class="difficulty_level" data-score="<%= @mystery.difficulty_level %>"></p>
+    <!-- 投稿ユーザーがログインユーザーと一致していたら編集ボタンと削除ボタンを表示 -->
+    <% if @mystery.user_id == current_user.id %>
+      <div class="col-5">
+        <%= link_to "編集", edit_mystery_path(@mystery), class:"btn btn-primary" %>
+        <%= link_to "削除", mystery_path(@mystery), method: :delete, class:"btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
   <div class="row">
     <div class="col-4">
       <%= link_to Refile.attachment_url(@mystery, :image), "data-lightbox":"mystery_img", "data-title":"問題画像" do %>
-        <%= attachment_image_tag @mystery, :image, alt:"No Image", size:"300x200" %>
+        <%= attachment_image_tag @mystery, :image, alt:"MysteryImage", size:"300x200" %>
       <% end %>
     </div>
     <div class="col-6 ml-3">
-      <%= @mystery.discription %>
+      <%=safe_join(@mystery.discription.split("\n"),tag(:br))%>
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-3 offset-5">
     投稿者：<%= @mystery.user.name %>
     <span class="ml-5">フォロー</span>
   </div>
@@ -30,9 +40,18 @@
         答え：<%= @mystery.answer %>
       </p>
       <P>
-        解説：<%= @mystery.answer_discription %>
+        解説：<%=safe_join(@mystery.answer_discription.split("\n"),tag(:br))%>
       </p>
     </div>
   </div>
 </div>
 
+<script>
+  $('.difficulty_level').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

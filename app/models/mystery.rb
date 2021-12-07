@@ -4,7 +4,7 @@ class Mystery < ApplicationRecord
   belongs_to :user
 
   # バリデーション
-  validates :title,:discription,:answer,:answer_discription, presence: true
+  validates :title,:discription,:answer,:answer_discription,:difficulty_level, presence: true
 
   # 画像アップ用のメソッド
   attachment :image
