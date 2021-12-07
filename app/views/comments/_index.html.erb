@@ -1,0 +1,12 @@
+<% mystery.comments.each do |comment| %>
+  <tr>
+    <td><%= comment.comment %></td>
+    <td>投稿者：<%= comment.user.name %></td>
+    <td>投稿日時：<%= comment.created_at %></td>
+    <% if comment.user.id == current_user.id %>
+      <td>
+        <%= link_to "削除", mystery_comment_path(mystery,comment), method: :delete, remote: true, class:"btn btn-danger" %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about', as: 'about'
 
   resources :mysteries do
-    resources :comments, only:[:create,:destroy,:update]
+    resources :comments, only:[:create,:destroy]
     resource :favorites, only:[:create,:destroy]
   end
 end

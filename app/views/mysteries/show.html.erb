@@ -1,4 +1,5 @@
 <h2>投稿詳細</h2>
+
 <div class="offset-1">
   <div class="row d-flex">
     <h4 class="mb-3"><%= @mystery.title %></h4>
@@ -26,7 +27,7 @@
       <%= render 'favorites/favorite-btn', mystery: @mystery %>
     </div>
     <div class="col-2">
-      <span>コメント数：<%= @mystery.comments.count %>件</span>
+      <span id="comment-count">コメント数：<%= @mystery.comments.count %>件</span>
     </div>
     <div class="ml-3">
       投稿者：<%= @mystery.user.name %>
@@ -52,27 +53,9 @@
       </p>
     </div>
   </div>
-  <%= form_with(model: [@mystery,@comment], local: true) do |f| %>
-    <div class="form-group mt-3">
-      <%= f.text_area :comment, placeholder: "コメントを書いてね", class:"form-control" %>
-    </div>
-    <div class="action">
-      <%= f.submit "コメント投稿", class:"btn btn-success" %>
-    </div>
-  <% end %>
-  <table class="table">
-    <% @mystery.comments.each do |comment| %>
-      <tr>
-        <td><%= comment.comment %></td>
-        <td>投稿者：<%= comment.user.name %></td>
-        <td>投稿日時：<%= comment.created_at %></td>
-        <% if comment.user.id == current_user.id %>
-          <td>
-            <%= link_to "削除", mystery_comment_path(comment), method: :delete, class:"btn btn-danger" %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
+  <%= render 'comments/form', mystery: @mystery, comment: @comment %>
+  <table class="table" id="comment-table">
+    <%= render 'comments/index', mystery: @mystery %>
   </table>
 </div>
 

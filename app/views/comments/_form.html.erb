@@ -1,0 +1,8 @@
+  <%= form_with(model: [mystery,comment], html: { method: :post }, remote: true) do |f| %>
+    <div class="form-group mt-3">
+      <%= f.text_area :comment, placeholder: "コメントを書いてね", class:"form-control" %>
+    </div>
+    <div class="action">
+      <%= f.submit "コメント投稿", class:"btn btn-success" %>
+    </div>
+  <% end %>
