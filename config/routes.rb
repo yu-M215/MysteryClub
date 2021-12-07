@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'comments/create'
-  get 'comments/destroy'
   devise_for :users
 
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
 
   resources :mysteries do
+    resources :comments, only:[:create,:destroy,:update]
     resource :favorites, only:[:create,:destroy]
   end
 end
