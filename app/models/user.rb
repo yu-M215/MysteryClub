@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :misteries, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # バリデーション
   validates :name, :tellphone_number, :email, :birthday, presence: true
