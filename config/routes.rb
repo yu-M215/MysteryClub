@@ -9,13 +9,13 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create,:destroy]
   end
 
-  resources :users, only:[:show,:edit,:update]
-
   # 退会機能のルーティング
   # 退会確認画面の表示
   get 'users/unsubscribe/' => 'users#unsubscribe', as: 'confirm_unsubscribe'
   # ユーザーの有効ステータスを更新
   patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
   put 'users/withdraw' => 'users#withdraw'
+
+  resources :users, only:[:show,:edit,:update]
 
 end
