@@ -14,4 +14,7 @@ class User < ApplicationRecord
   validates :name, length: { in: 1..10 }
   validates :introduction, length: { maximum: 200 }
   validates :tellphone_number, numericality: :only_integer
+
+  # 画像アップ用のメソッド
+  attachment :profile_image
 end

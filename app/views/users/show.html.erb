@@ -1,2 +1,38 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row mb-2">
+  <% if @user.id == current_user.id %>
+    <h2 class="col-2">マイページ</h2>
+    <span class="text-right">プロフィール編集</span>
+  <% else %>
+    <h2 class="col-2"><%= @user.name %> さんのプロフィール</h2>
+    <span>フォローする/フォロー解除</span>
+  <% end %>
+</div>
+
+<div class="row mb-4">
+  <div class="col-3 mb-3" id="user-manu">
+    <h6 class="text-center">メニュー</h6>
+    <ul>
+      <li>投稿一覧</li>
+      <li>いいねした投稿</li>
+      <li>フォロー</li>
+      <li>フォロワー</li>
+    </ul>
+  </div>
+  <div class="col-3">
+    <%= attachment_image_tag @user, :profile_image, size:"200x200", alt:"ProfileImage", fallback:"profile_img.jpg" %>
+  </div>
+  <div class="col-5">
+    <span>会員No.<%= @user.id %>：<%= @user.name %></span>
+    <% if @user.is_birthday_opened %>
+      <span>誕生日：<%= @user.birthday %></span>
+    <% else %>
+      <span>誕生日：非公開</span>
+    <% end %>
+    <div>
+      <%= @user.introduction %>
+    </div>
+  </div>
+</div>
+<%= render 'mysteries/index', mysteries: @mysteries %>
+
+
