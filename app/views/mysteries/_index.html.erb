@@ -12,9 +12,9 @@
         <p class="card-text"><i class="fas fa-heart" style="color: red;"></i><%= mystery.favorites.count %></br>
         コメント：<%= mystery.comments.count %> 件</p>
       </div>
-      <!--<div class="card-body">-->
+      <div class="card-body">
         <%= link_to "詳細", mystery_path(mystery.id), class:"card-link" %>
-      <!--</div>-->
+      </div>
       <div class="card-footer">
         投稿者：<%= mystery.user.name %>
       </div>
