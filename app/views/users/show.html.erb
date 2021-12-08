@@ -1,7 +1,7 @@
 <div class="row mb-2">
   <% if @user.id == current_user.id %>
     <h2 class="col-2">マイページ</h2>
-    <span class="text-right">プロフィール編集</span>
+    <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary offset-6 mt-2" %>
   <% else %>
     <h2 class="col-2"><%= @user.name %> さんのプロフィール</h2>
     <span>フォローする/フォロー解除</span>
