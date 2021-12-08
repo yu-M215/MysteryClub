@@ -1,6 +1,6 @@
 <h2 class="mb-4">プロフィール編集</h2>
 <div class="offset-1">
-  <%= form_with model:@user, local:true do |f| %>
+  <%= form_with model:@user, local:true, method: :patch do |f| %>
     <div class="form-group row">
       <%= f.label :name, "ニックネーム", class:"col-3" %>
       <%= f.text_field :name, class:"form-control col-3" %>

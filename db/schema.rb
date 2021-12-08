@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_075426) do
+ActiveRecord::Schema.define(version: 2021_12_08_091625) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "mystery_id", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_075426) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.integer "profile_image_id"
+    t.string "profile_image_id"
     t.text "introduction"
     t.string "tellphone_number", null: false
     t.datetime "birthday", null: false
