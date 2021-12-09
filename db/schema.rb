@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_08_091625) do
+ActiveRecord::Schema.define(version: 2021_12_09_060636) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "mystery_id", null: false
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 2021_12_08_091625) do
     t.text "answer_discription", null: false
     t.float "difficulty_level", default: 3.0, null: false
     t.boolean "is_opened", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "followed_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
