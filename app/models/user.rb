@@ -11,8 +11,8 @@ class User < ApplicationRecord
 
   has_many :relationships, class_name: "Relationships", foreign_key: "follower_id", dependent: :destroy
   has_many :follwings, through: :relationships, source: :followed
-  has_many :reverse_relationships, class_name: "Relationshiop", foreign_key: "follwed_id", dependent: :destroy
-  has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :reverse_of_relationships, class_name: "Relationshiop", foreign_key: "follwed_id", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower
 
   # バリデーション
   validates :name, :tellphone_number, :email, :birthday, presence: true
@@ -22,4 +22,17 @@ class User < ApplicationRecord
 
   # 画像アップ用のメソッド
   attachment :profile_image
+
+  # フォロー機能用
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+  # フォロー解除用
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+  # 引数で渡したユーザーをフォローしているか
+  def following?(user)
+    followings.include?(user)
+  end
 end
