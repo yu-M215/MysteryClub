@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'chats/show'
-  get 'relationships/create'
-  get 'relationships/destroy'
   devise_for :users,skip: [:passwords,], controllers: {
     registrations: "users/registrations",
     sessions: 'users/sessions'
