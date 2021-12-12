@@ -1,4 +1,4 @@
-<h2><%= @user.name %>さんとのDM</h2>
+<h2>DM</h2>
 
 <% if @chats.present? %>
   <table>
@@ -15,13 +15,11 @@
   <h3 class="text-center">メッセージはまだありません</h3>
 <% end %>
 
-<%= form_with model: @chat do |f| %>
+<%= form_with(model:[@room,@chat], local: true) do |f| %>
   <div class="form-group">
-    <%= f.text_field message, placeholder: "メッセージを入力して下さい", class:"form-control" %>
+    <%= f.text_field :message, placeholder: "メッセージを入力して下さい", class:"form-control" %>
   </div>
   <div class="action">
     <%= f.submit "投稿する", class:"btn btn-success" %>
   </div>
 <% end %>
-
-<%= link_to "プロフィールに戻る", user_path(@user.id) %>

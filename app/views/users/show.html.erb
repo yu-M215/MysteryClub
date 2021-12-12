@@ -1,8 +1,6 @@
 <div class="row mb-2">
   <% if @user.id == current_user.id %>
     <h2 class="col-2">マイページ</h2>
-    <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary offset-6 mt-2" %>
-    <%= link_to "退会", confirm_unsubscribe_path, class:"btn btn-danger" %>
   <% else %>
     <h2 class="col-2"><%= @user.name %> さんのプロフィール</h2>
     <%= render 'relationships/follow_button', user: @user %>
@@ -30,7 +28,17 @@
       <li>いいねした投稿一覧</li>
       <li>フォロー</li>
       <li>フォロワー</li>
-      <li>設定</li>
+      <% if @user.id == current_user.id %>
+        <li><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary offset-6 mt-2" %></li>
+        <li><%= link_to "退会", confirm_unsubscribe_path, class:"btn btn-danger" %></li>
+      <% else %>
+        <%= render 'relationships/follow_button', user: @user %>
+        <% if @is_room %>
+          <li><%= link_to "DM", room_path(@room_id) %></li>
+        <% else %>
+          <li><%= link_to "DMを始める", rooms_path(user_id: @user.id), method: :post %></li>
+        <% end %>
+      <% end %>
     </ul>
   </div>
 </div>
