@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   get 'relationships/create'
   get 'relationships/destroy'
   devise_for :users,skip: [:passwords,], controllers: {
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
 
+  # 謎解き投稿関連のルーティング
   resources :mysteries do
     resources :comments, only:[:create,:destroy]
     resource :favorites, only:[:create,:destroy]
@@ -21,10 +23,15 @@ Rails.application.routes.draw do
   patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
   put 'users/withdraw' => 'users#withdraw'
 
+  # ユーザープロフィール関連のルーティング
   resources :users, only:[:show,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
+  # DM機能のルーティング
+  resources :rooms, only:[:show,:create] do
+    resources :chats, only: [:create]
+  end
 end
