@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationshiop", foreign_key: "follwed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+
   # バリデーション
   validates :name, :tellphone_number, :email, :birthday, presence: true
   validates :name, length: { in: 1..10 }
