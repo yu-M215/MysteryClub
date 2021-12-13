@@ -28,7 +28,5 @@ Rails.application.routes.draw do
   end
 
   # DM機能のルーティング
-  resources :rooms, only:[:show,:create] do
-    resources :chats, only: [:create]
-  end
+  resources :chats, only: [:create,:show]
 end

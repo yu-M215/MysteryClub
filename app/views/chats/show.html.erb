@@ -1,0 +1,27 @@
+<h4><%= @user.name %>さんとのDM</h4>
+<% @chats.each do |chat| %>
+  <div class="row">
+  <% if chat.user.id == current_user.id %>
+    <div class="my-message col-6 offset-6">
+      <%= chat.message %>
+    </div>
+  <% else %>
+    <div class="user-message col-6">
+      <%= chat.message %>
+      <%= chat.user.name %>
+      <%= chat.created_at %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+
+
+<%= form_with model: @chat, local: true do |f| %>
+  <div class="form-group">
+    <%= f.text_field :message, class:"form-control" %>
+  </div>
+  <%= f.hidden_field :room_id %>
+  <div class="action">
+    <%= f.submit "送信", class:"btn btn-success" %>
+  </div>
+<% end %>

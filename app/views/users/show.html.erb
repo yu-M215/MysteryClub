@@ -1,9 +1,20 @@
 <div class="row mb-2">
   <% if @user.id == current_user.id %>
     <h2 class="col-2">マイページ</h2>
+    <ul>
+      <li><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary offset-6 mt-2" %></li>
+      <li><%= link_to "退会", confirm_unsubscribe_path, class:"btn btn-danger" %></li>
+    </ul>
   <% else %>
-    <h2 class="col-2"><%= @user.name %> さんのプロフィール</h2>
-    <%= render 'relationships/follow_button', user: @user %>
+    <h2 class="col-6"><%= @user.name %> さんのプロフィール</h2>
+    <div class="col-6">
+      <span class="offset-4">
+        <%= render 'relationships/follow_button', user: @user %>
+      </span>
+      <% if current_user.following?(@user) && @user.following?(current_user) %>
+        <%= link_to 'chatを始める', chat_path(@user.id), class: "ml-3" %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
@@ -22,25 +33,20 @@
       <%= @user.introduction %>
     </div>
   </div>
-  <div class="col-2" id="user-menu">
-    <ul class="pl-0">
-      <li>投稿一覧</li>
-      <li>いいねした投稿一覧</li>
-      <li>フォロー</li>
-      <li>フォロワー</li>
-      <% if @user.id == current_user.id %>
-        <li><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary offset-6 mt-2" %></li>
-        <li><%= link_to "退会", confirm_unsubscribe_path, class:"btn btn-danger" %></li>
-      <% else %>
-        <%= render 'relationships/follow_button', user: @user %>
-        <% if @is_room %>
-          <li><%= link_to "DM", room_path(@room_id) %></li>
-        <% else %>
-          <li><%= link_to "DMを始める", rooms_path(user_id: @user.id), method: :post %></li>
-        <% end %>
-      <% end %>
-    </ul>
+  <div class="col-2 list-group" id="user-menu">
+    <%= link_to "投稿一覧", user_path(@user), class:"list-group-item list-group-item-action active" %>
+    <%= link_to "いいねした投稿", user_path(@user), class:"list-group-item list-group-item-action" %>
+    <%= link_to "フォロー", user_path(@user), class:"list-group-item list-group-item-action" %>
+    <%= link_to "フォロワー", user_path(@user), class:"list-group-item list-group-item-action" %>
   </div>
+  <!--<div class="col-2" id="user-menu">-->
+  <!--  <ul class="pl-0">-->
+  <!--    <li>投稿一覧</li>-->
+  <!--    <li>いいねした投稿一覧</li>-->
+  <!--    <li>フォロー</li>-->
+  <!--    <li>フォロワー</li>-->
+  <!--  </ul>-->
+  <!--</div>-->
 </div>
 <%= render 'mysteries/index', mysteries: @mysteries %>
 
