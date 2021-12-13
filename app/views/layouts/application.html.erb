@@ -30,23 +30,26 @@
             <ul class="navbar-nav">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
+                  <%= link_to "マイページ", user_path(current_user), class:"nav-link text-right" %>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-light">投稿フォーム</a>
+                  <%= link_to "投稿一覧", mysteries_path, class:"nav-link text-right" %>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-light">マイページ</a>
+                  <%= link_to "投稿フォーム", new_mystery_path, class:"nav-link text-right" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-right" %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-light">About</a>
+                  <%= link_to "About", about_path, class:"nav-link text-right" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-light" %>
+                  <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-right" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path, class: "nav-link text-light" %>
+                  <%= link_to "ログイン", new_user_session_path, class: "nav-link text-right" %>
                 </li>
               <% end %>
             </ul>
