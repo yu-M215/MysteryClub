@@ -1,4 +1,4 @@
-<h4><%= @user.name %>さんとのDM</h4>
+<h4 class="mb-3"><%= @user.name %>さんとのDM</h4>
 <% @chats.each do |chat| %>
   <div class="row">
   <% if chat.user.id == current_user.id %>
@@ -6,10 +6,15 @@
       <%= chat.message %>
     </div>
   <% else %>
-    <div class="user-message col-6">
-      <%= chat.message %>
-      <%= chat.user.name %>
-      <%= chat.created_at %>
+    <div class="user-message">
+      <div class="row">
+        <%= attachment_image_tag chat.user, :profile_image, size:"40x40", fallback: "profile_img.jpg" %>
+        <p class="ml-3 pt-2 mb-0"><%= chat.user.name %></p>
+        <span class="pt-2 offset-1"><%= l chat.created_at, format: :short %></span>
+      </div>
+      <div class="offset-1">
+        <%= chat.message %>
+      </div>
     </div>
   <% end %>
   </div>
