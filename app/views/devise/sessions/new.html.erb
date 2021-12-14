@@ -1,25 +1,25 @@
-<h2 class="mb-5">ログイン</h2>
-<div class="offset-1">
+<div class="form-box offset-3 col-6 pb-3 pt-3">
+  <h4 class="header mb-5 text-center">ログイン</h4>
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-    <div class="form-group row">
-      <label class="col-2">メールアドレス</label>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class:"form-control col-3" %>
+    <div class="form-group row ml-3">
+      <label class="col-5">メールアドレス</label>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class:"form-control col-6" %>
     </div>
 
-    <div class="form-group row">
-      <label class="col-2">パスワード</label>
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class:"form-control col-3" %>
+    <div class="form-group row ml-3">
+      <label class="col-5">パスワード</label>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class:"form-control col-6" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field mt-5">
+      <div class="field mb-2 mt-5 d-flex justify-content-center">
         <%= f.check_box :remember_me %>
-        <label>ログイン状態を保持する</label>
+        <label class="ml-1">ログイン状態を保持する</label>
       </div>
     <% end %>
 
-    <div class="actions offset-3">
-      <%= f.submit "ログイン", class:"btn btn-outline-success" %>
+    <div class="actions d-flex justify-content-center">
+      <%= f.submit "ログイン", class:"btn btn-primary" %>
     </div>
   <% end %>
 
