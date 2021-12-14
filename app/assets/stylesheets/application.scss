@@ -33,6 +33,39 @@
 }
 
 .nav-item {
-  font-family: "cinecaption226";
   font-size: 18px;
+}
+
+.header, label, .nav-item, .action {
+  font-family: "cinecaption226";
+}
+
+.form-box p {
+  font-family: "cinecaption226";
+  color: red;
+}
+
+.form-box {
+  background-color: #FFF5EE;
+  border: double 4px brown;
+}
+
+.form-box h4 {
+  background-color: #DEB887;
+}
+
+.btn-primary, .btn-primary.outline,
+.btn-primary:hover, .btn-primary:focus,
+.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
+.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary,
+.open > .dropdown-toggle.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary:focus,
+.open > .dropdown-toggle.btn-primary.focus,
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
+    background: #8B0000;
+    border: 3px solid #8B0000;
+    color: #FFFAFA;
 }
