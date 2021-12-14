@@ -26,26 +26,26 @@
           </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarContent">
-          <div class="offset-4 col-4">
-            <ul class="navbar-nav">
+          <div>
+            <ul class="navbar-nav ml-3">
               <% if user_signed_in? %>
-                <li class="nav-item">
+                <li class="nav-item mr-3">
                   <%= link_to "マイページ", user_path(current_user), class:"nav-link text-right" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "投稿一覧", mysteries_path, class:"nav-link text-right" %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mr-3">
                   <%= link_to "投稿フォーム", new_mystery_path, class:"nav-link text-right" %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mr-3">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-right" %>
                 </li>
               <% else %>
-                <li class="nav-item">
+                <li class="nav-item mr-3">
                   <%= link_to "About", about_path, class:"nav-link text-right" %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mr-3">
                   <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-right" %>
                 </li>
                 <li class="nav-item">

@@ -17,3 +17,22 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+@font-face {
+  font-family: "cinecaption226";
+  src: font-url('cinecaption226.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JNRfont_n";
+  src: font-url('JNRfont_n.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.nav-item {
+  font-family: "cinecaption226";
+  font-size: 18px;
+}

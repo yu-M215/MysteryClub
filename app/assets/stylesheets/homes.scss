@@ -3,12 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .about-box {
-  width: 800px;
   height: 600px;
-  background-image: image-url("about_bg.png");
+  background-image: image-url("about_bg.jpg");
   background-size: cover;
+  background-repeat: norepeat;
+  background-position: center center;
+  position:relative;
 }
 
 .text-box {
   padding-top: 100px;
+  background-color: rgba(200,200,200,0.4);
+  position: absolute;
+}
+
+.text-box h3 {
+  color: white;
+}
+
+.text-box p {
+  color: white;
 }
