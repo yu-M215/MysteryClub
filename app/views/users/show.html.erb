@@ -9,7 +9,7 @@
     <h2 class="col-6"><%= @user.name %> さんのプロフィール</h2>
     <div class="col-6">
       <span class="offset-4">
-        <%= render 'relationships/follow_button', user: @user %>
+        <%= render 'relationships/follow_btn', user: @user %>
       </span>
       <% if current_user.following?(@user) && @user.following?(current_user) %>
         <%= link_to "DMを始める", chat_path(@user.id), class: "ml-3" %>
