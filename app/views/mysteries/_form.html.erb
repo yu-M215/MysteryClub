@@ -1,43 +1,45 @@
-<div class="offset-1">
+<div class="form-box mystery-form offset-2 col-8 pb-3 pt-4 pl-5">
 <%= form_with model: mystery, local:true do |f| %>
   <div class="form-group row">
-    <%= f.label :title, "タイトル", class:"col-2" %>
-    <%= f.text_field :title, autofocus: true, class:"form-control col-5" %>
+    <%= f.label :title, "タイトル", class:"col-4" %>
+    <%= f.text_field :title, autofocus: true, class:"form-control col-7" %>
   </div>
 
   <div class="form-group row">
-    <%= f.label :image, "画像", class:"col-2" %>
-    <%= f.attachment_field :image, class:"form-control-file col-5" %>
+    <%= f.label :image, "画像", class:"col-4" %>
+    <%= f.attachment_field :image, class:"form-control-file col-7" %>
   </div>
   <div class="form-group row">
-    <%= f.label :discription, "問題文", class:"col-2" %>
-    <%= f.text_area :discription, class:"form-control col-7" %>
+    <%= f.label :discription, "問題文", class:"col-4" %>
+    <%= f.text_area :discription, rows:'5', class:"form-control col-7" %>
   </div>
   <div class="form-group row">
-    <%= f.label :answer, "答え", class:"col-2" %>
-    <%= f.text_field :answer, class:"form-control col-5" %>
+    <%= f.label :answer, "答え", class:"col-4" %>
+    <%= f.text_field :answer, class:"form-control col-7" %>
   </div>
   <div class="form-group row">
-    <%= f.label :answer_discription, "解説", class:"col-2" %>
-    <%= f.text_area :answer_discription, class:"form-control col-7" %>
+    <%= f.label :answer_discription, "解説", class:"col-4" %>
+    <%= f.text_area :answer_discription, rows:'5', class:"form-control col-7" %>
   </div>
   <div class="form-group row">
-    <%= f.label :answer_image, "解説用画像", class:"col-2" %>
-    <%= f.attachment_field :answer_image, class:"form-control-file col-4" %>
+    <%= f.label :answer_image, "解説用画像", class:"col-4" %>
+    <%= f.attachment_field :answer_image, class:"form-control-file col-7" %>
   </div>
   <div class="form-group row" id="difficulty_level">
-    <label class="col-2">難易度</label>
+    <label class="col-4">難易度</label>
   </div>
-  <div class="form-check form-check-inline">
-    <%= f.label :is_opened, "公開設定", class:"mr-5" %>
-    <%= f.radio_button :is_opened, true, class:"form-check-input ml-5", id:"checkbox1" %>
-    <label class="form-check-label" for="checkbox1">公開</label>
-    <%= f.radio_button :is_opened, false, class:"form-check-input ml-2", id:"checkbox2" %>
-    <label class="form-check-label" for="checkbox2">非公開</label>
+  <div class="form-group row">
+    <%= f.label :is_opened, "公開設定", class:"col-4" %>
+    <div class="radio-button-box">
+      <%= f.radio_button :is_opened, true %>
+      <%= f.label :is_opened, "公開", {value: true, style: "display: inline-block;"} %>
+      <%= f.radio_button :is_opened, false, class:"ml-3" %>
+      <%= f.label :is_opened, "非公開", {value: false, style: "display: inline-block;"} %>
+    </div>
   </div>
 
   <div class="action">
-    <%= f.submit btn_string, class:"btn btn-success col-2 offset-5 mt-5" %>
+    <%= f.submit btn_string, class:"btn btn-primary col-2 offset-5 mt-4" %>
   </div>
 <% end %>
 </div>
