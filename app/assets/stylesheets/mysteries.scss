@@ -2,14 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#answer-button:hover {
-  cursor: pointer;
-}
-
-#answer-box {
-  display: none;
-}
-
 .mystery-form label {
   padding-left: 25px;
+}
+
+.edit-comment-btn:hover {
+  cursor: pointer;
 }

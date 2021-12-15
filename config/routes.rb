@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   # 謎解き投稿関連のルーティング
   resources :mysteries do
-    resources :comments, only:[:create,:destroy]
+    # コメント機能
+    resources :comments, only:[:create,:update,:destroy]
+    # いいね機能
     resource :favorites, only:[:create,:destroy]
   end
 

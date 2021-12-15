@@ -3,10 +3,10 @@
 <% if @mystery.user == current_user %>
   <div class="text-center mb-2">
     <%= link_to edit_mystery_path(@mystery) do %>
-      <i class="fas fa-edit"></i>
+      <i class="fas fa-edit mr-1"></i>
     <% end %>
     <%= link_to mystery_path(@mystery), method: :destroy, data: {confirm: "編集ページから非公開に変更もできますが、削除してよろしいですか？"} do %>
-      <i class="fas fa-trash-alt"></i>
+      <i class="fas fa-trash-alt ml-1"></i>
     <% end %>
   </div>
 <% end %>
@@ -42,7 +42,7 @@
             <span class="ml-5" id="favorite-btn">
               <%= render 'favorites/favorite-btn', mystery: @mystery %>
             </span>
-            <span class="ml-2"><i class="fas fa-comments"></i> <%= @mystery.comments.count %></span>
+            <span class="ml-2" id="comment-count"><i class="fas fa-comments"></i> <%= @mystery.comments.count %></span>
           </div>
           <h6 class="card-subtitle">難易度：<span class="difficulty_level" data-score="<%= @mystery.difficulty_level %>"></span></h6>
           <p class="card-text"><%= safe_join(@mystery.discription.split("\n"),tag(:br)) %></p>
@@ -91,7 +91,7 @@
     <%= render 'comments/form', mystery: @mystery, comment: @comment %>
   </div>
   <!--コメント一覧-->
-  <table class="table col-7 ml-2" id="comment-table">
+  <table class="table col-7 ml-2" id="comment-box">
     <%= render 'comments/index', mystery: @mystery %>
   </table>
 </div>

@@ -6,6 +6,11 @@ class CommentsController < ApplicationController
     @comment.save
   end
 
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+  end
+
   def destroy
     @mystery = Mystery.find(params[:mystery_id])
     Comment.find_by(id: params[:id]).destroy
