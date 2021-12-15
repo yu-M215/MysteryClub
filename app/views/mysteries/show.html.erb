@@ -1,13 +1,18 @@
 <h4 class="header text-center">投稿詳細</h4>
+<!--ログインユーザーの投稿なら編集ボタンと削除ボタンを表示する-->
 <% if @mystery.user == current_user %>
-  <%= link_to edit_mystery_path(@mystery) do %>
-    <i class="fas fa-edit"></i>
-  <% end %>
-  <%= link_to mystery_path(@mystery), method: :destroy, data: {confirm: "編集ページから非公開に変更もできますが、削除してよろしいですか？"} do %>
-    <i class="fas fa-trash-alt"></i>
-  <% end %>
+  <div class="text-center mb-2">
+    <%= link_to edit_mystery_path(@mystery) do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to mystery_path(@mystery), method: :destroy, data: {confirm: "編集ページから非公開に変更もできますが、削除してよろしいですか？"} do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
 <% end %>
+
 <div class="card">
+  <!--カードのヘッダー部-->
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" id="mysteryTab" role="tablist">
       <li class="nav-item">
@@ -32,13 +37,15 @@
           <% end %>
         </div>
         <div class="col-8 card-body">
-          <h5 class="card-title"><%= @mystery.title %></h5>
+          <div class="row">
+            <h5 class="card-title"><%= @mystery.title %></h5>
+            <span class="ml-5" id="favorite-btn">
+              <%= render 'favorites/favorite-btn', mystery: @mystery %>
+            </span>
+            <span class="ml-2"><i class="fas fa-comments"></i> <%= @mystery.comments.count %></span>
+          </div>
           <h6 class="card-subtitle">難易度：<span class="difficulty_level" data-score="<%= @mystery.difficulty_level %>"></span></h6>
-          <p class="card-text pl-3"><%= safe_join(@mystery.discription.split("\n"),tag(:br)) %></p>
-          <span id="favorite-btn">
-            <%= render 'favorites/favorite-btn', mystery: @mystery %>
-          </span>
-          <span><i class="fas fa-comments"></i> <%= @mystery.comments.count %></span>
+          <p class="card-text"><%= safe_join(@mystery.discription.split("\n"),tag(:br)) %></p>
         </div>
       </div>
     </div>
@@ -78,11 +85,18 @@
   </div>
 </div>
 
-<%= render 'comments/form', mystery: @mystery, comment: @comment %>
-<table class="table" id="comment-table">
-  <%= render 'comments/index', mystery: @mystery %>
-</table>
+<div class="row mt-3">
+  <!--コメント投稿フォーム-->
+  <div class="col-4">
+    <%= render 'comments/form', mystery: @mystery, comment: @comment %>
+  </div>
+  <!--コメント一覧-->
+  <table class="table col-7 ml-2" id="comment-table">
+    <%= render 'comments/index', mystery: @mystery %>
+  </table>
+</div>
 
+<!--難易度の星の表示-->
 <script>
   $('.difficulty_level').raty({
     readOnly: true,
