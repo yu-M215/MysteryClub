@@ -16,4 +16,9 @@ class Mystery < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  # 検索フォームに入力された文字列をtitleかdiscriptionに含む投稿を探す
+  def self.search_for(keyword)
+    Mystery.where('title LIKE ?', '%'+keyword+'%').or(Mystery.where('discription LIKE ?', '%'+keyword+'%'))
+  end
 end
