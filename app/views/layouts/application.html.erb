@@ -55,10 +55,12 @@
             </ul>
           </div>
           <div class="ml-auto">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-dark" type="submit">Search</button>
-            </form>
+            <%= form_with url: "search_path", local: true, class:"d-flex" do |f| %>
+              <%= f.search_field :keyword, class: "form-control me-2", placeholder: "Search" %>
+              <%= button_tag type:"submit", class:"btn btn-dark" do %>
+                <i class="fa fa-search"></i>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </nav>

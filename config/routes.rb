@@ -29,4 +29,7 @@ Rails.application.routes.draw do
 
   # DM機能のルーティング
   resources :chats, only: [:create,:show]
+
+  # 検索機能のルーティング
+  get 'search' => 'searches#search', as: 'search'
 end
