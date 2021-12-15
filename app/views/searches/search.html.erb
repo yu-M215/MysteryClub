@@ -1,0 +1,7 @@
+<h4 class="header text-center">”<%= @keyword %>” の検索結果</h4>
+<% @mysteries.each do |mystery| %>
+  <%= mystery.title %>
+<% end %>
+<% @users.each do |user| %>
+  <h4><%= user.name %></h4>
+<% end %>

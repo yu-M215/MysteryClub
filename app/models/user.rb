@@ -41,6 +41,6 @@ class User < ApplicationRecord
 
   # 検索フォームに入力された文字列をnameに含むユーザーを探す
   def self.search_for(keyword)
-    User.where('name LIKE ?', '%'+keyword+'%')
+    User.where('name LIKE ?', "%#{keyword}%")
   end
 end

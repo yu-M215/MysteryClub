@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
 
+  # 検索機能のルーティング
+  get '/search' => 'searches#search', as: 'search'
+
   # 謎解き投稿関連のルーティング
   resources :mysteries do
     resources :comments, only:[:create,:destroy]
@@ -30,6 +33,4 @@ Rails.application.routes.draw do
   # DM機能のルーティング
   resources :chats, only: [:create,:show]
 
-  # 検索機能のルーティング
-  get 'search' => 'searches#search', as: 'search'
 end
