@@ -27,6 +27,11 @@ class ChatsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def destroy
+    Chat.find(params[:id]).destroy
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def chat_params

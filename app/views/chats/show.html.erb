@@ -1,18 +1,22 @@
-<h4 class="header mb-3"><%= @user.name %>さんとのDM</h4>
+<h4 class="header mb-3"><%= @user.name %>さん</h4>
 
-<div class="container offset-1 col-10 px-3 py-3">
+<div class="container chat-container px-3 py-3">
 <% @chats.each do |chat| %>
   <% if chat.user.id == current_user.id %>
-    <div class="send-message-box d-flex justify-content-end">
+    <div class="send-message-box d-flex justify-content-end align-items-end">
       <p class="px-3 py-3"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
+      <%= link_to chat_path(chat), method: :delete, local: true do %>
+        <i class="fas fa-trash-alt ml-1"></i>
+      <% end %>
     </div>
+    <p class="text-right my-1"><%= l chat.created_at, format: :short %></p>
   <% else %>
     <div class="row">
       <div class="col-1 my-auto">
         <%= attachment_image_tag chat.user, :profile_image, size:"50x50", fallback: "profile_image.jpg", class:"rounded-circle" %>
       </div>
       <div class="recieve-message-box">
-        <p class="px-3 py-3 mb-0"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
+        <p class="px-3 py-3"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
       </div>
     </div>
     <p class="offset-1 my-1"><%= l chat.created_at, format: :short %></p>
