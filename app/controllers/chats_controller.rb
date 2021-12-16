@@ -22,14 +22,14 @@ class ChatsController < ApplicationController
   end
 
   def create
+    @chats = Chat.where(room_id: params[:chat][:room_id])
     @chat = current_user.chats.new(chat_params)
     @chat.save
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    Chat.find(params[:id]).destroy
-    redirect_back(fallback_location: root_path)
+    @chat = Chat.find(params[:id])
+    @chat.destroy
   end
 
   private

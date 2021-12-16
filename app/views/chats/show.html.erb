@@ -1,33 +1,15 @@
 <h4 class="header mb-3"><%= @user.name %>さん</h4>
 
-<div class="container chat-container px-3 py-3">
-<% @chats.each do |chat| %>
-  <% if chat.user.id == current_user.id %>
-    <div class="send-message-box d-flex justify-content-end align-items-end">
-      <p class="px-3 py-3"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
-      <%= link_to chat_path(chat), method: :delete, local: true do %>
-        <i class="fas fa-trash-alt ml-1"></i>
-      <% end %>
-    </div>
-    <p class="text-right my-1"><%= l chat.created_at, format: :short %></p>
-  <% else %>
-    <div class="row">
-      <div class="col-1 my-auto">
-        <%= attachment_image_tag chat.user, :profile_image, size:"50x50", fallback: "profile_image.jpg", class:"rounded-circle" %>
-      </div>
-      <div class="recieve-message-box">
-        <p class="px-3 py-3"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
-      </div>
-    </div>
-    <p class="offset-1 my-1"><%= l chat.created_at, format: :short %></p>
-  <% end %>
-<% end %>
+<div class="container chat-container px-3 py-3" id="">
+  <div id="chat-box">
+    <%= render 'chats/index', chats: @chats %>
+  </div>
 
-<%= form_with model: @chat, local: true do |f| %>
+<%= form_with model: @chat, remote: true do |f| %>
   <div class="form-group col-6 offset-3">
     <%= f.text_area :message, rows:"3", class:"form-control" %>
   </div>
-  <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :room_id, value: @room.id %>
   <div class="action text-center">
     <%= f.submit "送信", class:"btn btn-success" %>
   </div>
