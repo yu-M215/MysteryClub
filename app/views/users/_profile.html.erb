@@ -1,0 +1,46 @@
+<div class="card offset-1 col-10 mb-3">
+  <div class="row no-gutters">
+    <div class="col-3">
+      <%= attachment_image_tag user, :profile_image, size:"180x180", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded mx-auto" %>
+    </div>
+    <div class="col-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= user.name %></h5>
+        <% if user.is_birthday_opened %>
+          <span>誕生日：<%= l user.birthday, format: :birthday  %></span>
+        <% else %>
+          <span>誕生日：非公開</span>
+        <% end %>
+        <% if user.introduction %>
+          <p class="card-text">
+            <%= safe_join(user.introduction.split("\n"),tag(:br)) %>
+          </p>
+        <% end %>
+      </div>
+      <div>
+        <ul class="nav">
+          <li class="nav-item">
+            <%= link_to "投稿", user_path(user), class:"nav-link active" %>
+          </li>
+          <li class="nav-item" id="follow-count">
+            <%= link_to user_path(user), class:"nav-link" do %>
+              フォロー
+              <%= user.followings.count %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to user_path(user), class:"nav-link" do %>
+              フォロワー
+              <%= user.followers.count %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to user_path(user), class:"nav-link" do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

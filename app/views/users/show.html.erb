@@ -1,49 +1,26 @@
-<div class="row mb-2">
-  <% if @user.id == current_user.id %>
-    <h2 class="col-2">マイページ</h2>
-    <ul>
-      <li><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-primary offset-6 mt-2" %></li>
-      <li><%= link_to "退会", confirm_unsubscribe_path, class:"btn btn-danger" %></li>
-    </ul>
-  <% else %>
-    <h2 class="col-6"><%= @user.name %> さんのプロフィール</h2>
-    <div class="col-6">
-      <span class="offset-4">
-        <%= render 'relationships/follow_btn', user: @user %>
-      </span>
-      <% if current_user.following?(@user) && @user.following?(current_user) %>
-        <%= link_to "DMを始める", chat_path(@user.id), class: "ml-3" %>
-      <% end %>
+<% if @user == current_user %>
+  <div class="row">
+    <h4 class="header col-2 offset-5">マイページ</h4>
+    <a class="mr-3" data-toggle="collapse" href="#confcollapse" role="button" aria-expanded="false" aria-controls="confcollapse">
+      <i class="fas fa-cogs"></i>
+    </a>
+    <div class="overflow-hidden">
+      <div class="collapse" id="confcollapse">
+        <%= link_to "プロフィール編集", edit_user_path(@user), class:"mr-2" %>
+        <%= link_to "退会", confirm_unsubscribe_path %>
+      </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <h4 class="header text-center"><%= @user.name %> さんのプロフィール</h4>
+  <div class="row">
+    <%= render 'relationships/follow_btn', user: @user %>
+    <% if current_user.following?(@user) && @user.following?(current_user) %>
+      <%= link_to "DM", chat_path(@user.id), class:"ml-3" %>
+    <% end %>
+  </div>
+<% end %>
 
-<div class="row mb-4">
-  <div class="offset-1 col-2 pl-1" id="profile-image-box">
-    <%= attachment_image_tag @user, :profile_image, size:"180x180", alt:"ProfileImage", fallback:"profile_image.jpg" %>
-  </div>
-  <div class="col-6">
-    <span>会員No.<%= @user.id %>：<%= @user.name %></span>
-    <% if @user.is_birthday_opened %>
-      <span>誕生日：<%= l @user.birthday, format: :birthday  %></span>
-    <% else %>
-      <span>誕生日：非公開</span>
-    <% end %>
-    <div id="profile-box">
-      <%= @user.introduction %>
-    </div>
-  </div>
-  <div class="col-2 list-group" id="user-menu">
-    <%= link_to "投稿一覧", user_path(@user), class:"list-group-item list-group-item-action active" %>
-    <%= link_to "いいねした投稿", user_path(@user), class:"list-group-item list-group-item-action" %>
-    <%= link_to user_path(@user), class:"list-group-item list-group-item-action" do %>
-      フォロー：<%= @user.followings.count %>
-    <% end %>
-    <%= link_to user_path(@user), class:"list-group-item list-group-item-action" do %>
-      フォロワー：<%= @user.followers.count %>
-    <% end %>
-  </div>
-</div>
+<%= render 'users/profile', user: @user %>
 <%= render 'mysteries/index', mysteries: @mysteries %>
-
 

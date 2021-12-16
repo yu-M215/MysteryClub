@@ -1,11 +1,11 @@
 <table class="table" id="follows-table">
   <%= users.each do |user| %>
     <tr>
+      <td><%= attachment_image_tag user, :profile_image, size: "40x40", class:"rounded-circle" %></td>
       <td><%= user.name %></td>
-      <td><%= attachment_image_tag user, :profile_image, size: "40x40" %></td>
-      <td>フォロー：<%= user.followings %>人</td>
-      <td>フォロワー：<%= user.followers %>人</td>
-      <td><%= link_to user_path(user.id), "プロフィール" %></td>
+      <td>フォロー<%= user.followings %></td>
+      <td>フォロワー<%= user.followers %></td>
+      <td><%= link_to "プロフィール", user_path(user.id) %></td>
     </tr>
   <% end %>
 </table>

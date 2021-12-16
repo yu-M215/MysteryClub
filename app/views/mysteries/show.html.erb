@@ -62,7 +62,7 @@
           <h6 class="card-title">答え： <%= @mystery.answer %></h6>
           <p class="card-text">
             解説：</br>
-            <%=safe_join(@mystery.answer_discription.split("\n"),tag(:br))%>
+            <%= safe_join(@mystery.answer_discription.split("\n"),tag(:br)) %>
           </p>
         </div>
       </div>
@@ -75,7 +75,11 @@
           <%= attachment_image_tag @mystery.user, :profile_image, size:"180x180", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle"; %>
         </div>
         <div class="col-8 ml-2 card-body">
-          <h5 class="card-title"><%= @mystery.user.name %></h5>
+          <h5 class="card-title">
+            <%= link_to user_path(@mystery.user) do %>
+              <%= @mystery.user.name %>
+            <% end %>
+          </h5>
           <p>フォロー： <%= @mystery.user.followings.count %></p>
           <p>フォロワー： <%= @mystery.user.followers.count %></p>
           <%= render 'relationships/follow_btn', user: @mystery.user %>
