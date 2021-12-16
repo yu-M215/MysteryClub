@@ -20,7 +20,7 @@
 
 <div class="row mb-4">
   <div class="offset-1 col-2 pl-1" id="profile-image-box">
-    <%= attachment_image_tag @user, :profile_image, size:"180x180", alt:"ProfileImage", fallback:"profile_img.jpg" %>
+    <%= attachment_image_tag @user, :profile_image, size:"180x180", alt:"ProfileImage", fallback:"profile_image.jpg" %>
   </div>
   <div class="col-6">
     <span>会員No.<%= @user.id %>：<%= @user.name %></span>
