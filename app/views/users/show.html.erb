@@ -12,7 +12,7 @@
     </div>
   </div>
 <% else %>
-  <h4 class="header text-center"><%= @user.name %> さんのプロフィール</h4>
+  <h4 class="header"><%= @user.name %> さんのプロフィール</h4>
   <div class="row mt-1 mb-3">
     <div class="offset-4 col-4 text-center">
       <%= render 'relationships/follow_btn', user: @user %>
