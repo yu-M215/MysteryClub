@@ -1,32 +1,31 @@
 <h4 class="header mb-3"><%= @user.name %>さんとのDM</h4>
+
+<div class="container offset-1 col-10 px-3 py-3">
 <% @chats.each do |chat| %>
-  <div class="row">
   <% if chat.user.id == current_user.id %>
-    <div class="my-message col-6 offset-6">
-      <%= chat.message %>
+    <div class="send-message-box d-flex justify-content-end">
+      <p class="px-3 py-3"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
     </div>
   <% else %>
-    <div class="user-message">
-      <div class="row">
-        <%= attachment_image_tag chat.user, :profile_image, size:"40x40", fallback: "profile_img.jpg" %>
-        <p class="ml-3 pt-2 mb-0"><%= chat.user.name %></p>
-        <span class="pt-2 offset-1"><%= l chat.created_at, format: :short %></span>
+    <div class="row">
+      <div class="col-1 my-auto">
+        <%= attachment_image_tag chat.user, :profile_image, size:"50x50", fallback: "profile_image.jpg", class:"rounded-circle" %>
       </div>
-      <div class="offset-1">
-        <%= chat.message %>
+      <div class="recieve-message-box">
+        <p class="px-3 py-3 mb-0"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
       </div>
     </div>
+    <p class="offset-1 my-1"><%= l chat.created_at, format: :short %></p>
   <% end %>
-  </div>
 <% end %>
 
-
 <%= form_with model: @chat, local: true do |f| %>
-  <div class="form-group">
-    <%= f.text_field :message, class:"form-control" %>
+  <div class="form-group col-6 offset-3">
+    <%= f.text_area :message, rows:"3", class:"form-control" %>
   </div>
   <%= f.hidden_field :room_id %>
-  <div class="action">
+  <div class="action text-center">
     <%= f.submit "送信", class:"btn btn-success" %>
   </div>
 <% end %>
+</div>

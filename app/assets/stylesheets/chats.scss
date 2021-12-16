@@ -1,3 +1,13 @@
 // Place all the styles related to the chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.recieve-message-box p {
+  background-color: #f5f5dc;
+  border-radius: 10px;
+}
+
+.send-message-box p {
+  background-color: #ffe4e1;
+  border-radius: 10px;
+}
