@@ -21,4 +21,18 @@ class Mystery < ApplicationRecord
   def self.search_for(keyword)
     Mystery.where('title LIKE ?', '%'+keyword+'%').or(Mystery.where('discription LIKE ?', '%'+keyword+'%'))
   end
+
+  # 選択された方法で投稿を並べ替える
+  def self.sort(method)
+    case method
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'favorites'
+      return left_joins(:favorites).group(:id).order(Arel.sql('COUNT(favorites.id) desc'))
+    when 'difficulty'
+      return all.order(difficulty_level: :DESC)
+    end
+  end
 end

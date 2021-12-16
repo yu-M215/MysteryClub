@@ -7,6 +7,12 @@ class MysteriesController < ApplicationController
     @mysteries = Mystery.where(is_opened: true)
   end
 
+  def sort
+    method = params[:method]
+    @mysteries = Mystery.sort(method).where(is_opened: true)
+    render 'index'
+  end
+
   def show
     @comment = Comment.new
   end

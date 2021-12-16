@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/search' => 'searches#search', as: 'search'
 
   # 謎解き投稿関連のルーティング
+  get 'sort' => 'mysteries#sort', as: 'sort'
   resources :mysteries do
     # コメント機能
     resources :comments, only:[:create,:update,:destroy]
