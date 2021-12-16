@@ -1,5 +1,6 @@
 <div class="card-deck">
   <% mysteries.each do |mystery| %>
+    <!--is_openedがtrueのもののみ表示-->
     <% if mystery.is_opened %>
       <div class="card col-3 px-0">
         <%= attachment_image_tag mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
@@ -15,6 +16,7 @@
         </div>
       </div>
     <% else %>
+      <!--投稿ユーザーとログインユーザーが一致している場合は非公開投稿も表示-->
       <% if mystery.user == current_user %>
         <div class="card col-3 px-0">
           <%= attachment_image_tag mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
