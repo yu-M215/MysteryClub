@@ -5,7 +5,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @mysteries = Mystery.where(user_id: @user.id)
+    if @user == current_user
+      @mysteries = current_user.mysteries
+    else
+      @mysteries = Mystery.where(user_id: @user.id).where(is_opened: true)
+    end
   end
 
   def edit

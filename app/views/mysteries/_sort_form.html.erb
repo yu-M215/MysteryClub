@@ -1,4 +1,10 @@
-<%= form_with model: mystery, url: sort_path, method: :get, local: true do |f| %>
-  <%= f.select :method, [['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['いいねが多い順','favorites'],['難易度の高い順','difficulty']] %>
-  <%= f.submit "並び替え" %>
-<% end %>
+<div class="col-3 offset-4 mx-auto mb-2">
+  <%= form_with model: mystery, url: sort_path, method: :get, local: true, class:"form-inline" do |f| %>
+    <div class="form-group">
+      <%= f.select :method, [['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['いいねが多い順','favorites'],['難易度の高い順','difficulty']], class:"form-control" %>
+    </div>
+    <div class="action">
+      <%= f.submit "並び替え", class:"ml-2 btn btn-success" %>
+    </div>
+  <% end %>
+</div>
