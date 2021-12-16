@@ -59,7 +59,7 @@
           <% end %>
         </div>
         <div class="col-7 card-body">
-          <h6 class="card-title">答え： <%= @mystery.answer %></h6>
+          <p class="card-text">答え： <%= @mystery.answer %></p>
           <p class="card-text">
             解説：</br>
             <%= safe_join(@mystery.answer_discription.split("\n"),tag(:br)) %>
@@ -71,7 +71,7 @@
     <!--投稿者タブ-->
     <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
       <div class="row">
-        <div class="col-3 ml-5 mt-2">
+        <div class="col-3 ml-5 my-2">
           <%= attachment_image_tag @mystery.user, :profile_image, size:"180x180", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle"; %>
         </div>
         <div class="col-8 ml-2 card-body">
