@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
   put 'users/withdraw' => 'users#withdraw'
 
+  # ユーザーがいいねした投稿の一覧表示
+  get 'users/:id/favorites' => 'users#favorites', as: 'favorites_index'
+
   # ユーザープロフィール関連のルーティング
   resources :users, only:[:show,:edit,:update] do
     resource :relationships, only: [:create, :destroy]

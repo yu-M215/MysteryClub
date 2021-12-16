@@ -5,11 +5,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user == current_user
-      @mysteries = current_user.mysteries
-    else
-      @mysteries = Mystery.where(user_id: @user.id).where(is_opened: true)
-    end
+    @mysteries = Mystery.where(user_id: @user.id)
+  end
+
+  def favorites
+    @user = User.find(params[:id])
+    favorites_id = @user.favorites.pluck(:mystery_id)
+    @mysteries = Mystery.find(favorites_id)
+    render 'show'
   end
 
   def edit

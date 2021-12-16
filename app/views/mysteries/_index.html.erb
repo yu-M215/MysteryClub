@@ -1,18 +1,36 @@
 <div class="card-deck">
   <% mysteries.each do |mystery| %>
-    <div class="card col-3 px-0">
-      <%= attachment_image_tag mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= link_to mystery_path(mystery.id) do %>
-            <%= mystery.title %>
-          <% end %>
-        </h5>
-        <p class="difficulty_level card-text" data-score="<%= mystery.difficulty_level %>"></p>
-        <span><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
-        <span class="ml-2"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
+    <% if mystery.is_opened %>
+      <div class="card col-3 px-0">
+        <%= attachment_image_tag mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to mystery_path(mystery.id) do %>
+              <%= mystery.title %>
+            <% end %>
+          </h5>
+          <p class="difficulty_level card-text" data-score="<%= mystery.difficulty_level %>"></p>
+          <span><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
+          <span class="ml-2"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <% if mystery.user == current_user %>
+        <div class="card col-3 px-0">
+          <%= attachment_image_tag mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to mystery_path(mystery.id) do %>
+                <%= mystery.title %> <i class="fas fa-lock"></i>
+              <% end %>
+            </h5>
+            <p class="difficulty_level card-text" data-score="<%= mystery.difficulty_level %>"></p>
+            <span><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
+            <span class="ml-2"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 
