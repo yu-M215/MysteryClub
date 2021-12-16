@@ -13,11 +13,15 @@
   </div>
 <% else %>
   <h4 class="header text-center"><%= @user.name %> さんのプロフィール</h4>
-  <div class="row">
-    <%= render 'relationships/follow_btn', user: @user %>
-    <% if current_user.following?(@user) && @user.following?(current_user) %>
-      <%= link_to "DM", chat_path(@user.id), class:"ml-3" %>
-    <% end %>
+  <div class="row mt-1 mb-3">
+    <div class="offset-4 col-4 text-center">
+      <%= render 'relationships/follow_btn', user: @user %>
+      <% if current_user.following?(@user) && @user.following?(current_user) %>
+        <%= link_to chat_path(@user.id), class:"ml-3" do %>
+          DM <i class="fas fa-envelope"></i>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
 
