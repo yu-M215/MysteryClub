@@ -89,15 +89,15 @@
   </div>
 </div>
 
-<div class="row mt-3">
+<div class="row mt-5">
   <!--コメント投稿フォーム-->
   <div class="col-4">
     <%= render 'comments/form', mystery: @mystery, comment: @comment %>
   </div>
   <!--コメント一覧-->
-  <table class="table col-7 ml-2" id="comment-box">
+  <div class="col-7 offset-1" id="comment-box">
     <%= render 'comments/index', mystery: @mystery %>
-  </table>
+  </div>
 </div>
 
 <!--難易度の星の表示-->

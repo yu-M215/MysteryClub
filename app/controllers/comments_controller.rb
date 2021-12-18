@@ -1,22 +1,30 @@
 class CommentsController < ApplicationController
+
+  before_action :set_mystery
+
   def create
-    @mystery = Mystery.find(params[:mystery_id])
     @comment = current_user.comments.new(comment_params)
     @comment.mystery_id = @mystery.id
     @comment.save
+    redirect_back fallback_location: mystery_path(params[:mystery_id])
   end
 
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
+    redirect_back fallback_location: mystery_path(params[:mystery_id])
   end
 
   def destroy
-    @mystery = Mystery.find(params[:mystery_id])
     Comment.find_by(id: params[:id]).destroy
+    redirect_back fallback_location: mystery_path(params[:mystery_id])
   end
 
   private
+
+  def set_mystery
+    @mystery = Mystery.find(params[:mystery_id])
+  end
 
   def comment_params
     params.require(:comment).permit(:comment)

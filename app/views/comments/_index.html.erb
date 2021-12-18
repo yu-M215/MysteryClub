@@ -1,17 +1,29 @@
 <% mystery.comments.each do |comment| %>
-  <tr>
-    <td><%= comment.comment %></td>
-    <td>by <%= comment.user.name %></td>
-    <td><%= l comment.created_at, format: :short %></td>
-    <% if comment.user.id == current_user.id %>
-      <td>
-        <%= link_to mystery_comment_path(mystery,comment), method: :delete, remote: true do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </td>
-      <td>
-        <i class="fas fa-edit edit-comment-btn"></i>
-      </td>
+  <%= attachment_image_tag comment.user, :profile_image, size:"45x45", fallback:"profile_image.jpg", alt:"ProfileImage", class:"rounded-circle" %>
+  <span><%= comment.user.name %></span>
+  <p class="my-2 ml-3"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
+  <div class="row ml-2">
+    <% if comment.user == current_user %>
+      <!--クリックするとコメント編集フォームが出てくる-->
+      <a data-toggle="collapse" href="#collapseCommentEdit_<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseCommentEdit_<%= comment.id %>">
+        <i class="fas fa-edit mr-2"></i>
+      </a>
+      <%= link_to mystery_comment_path(comment.mystery_id, comment.id), method: :delete, local: true do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
     <% end %>
-  </tr>
+    <p class="offset-8"><%= l comment.created_at, format: :short %></p>
+  </div>
+  <!--コメント編集フォーム-->
+  <div class="collapse" id="collapseCommentEdit_<%= comment.id %>">
+    <%= form_with(model:[mystery, comment], url: mystery_comment_path(comment.mystery_id,comment.id), method: :patch, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, class:"form-control" %>
+      </div>
+      <div class="action">
+        <%= f.submit "変更", class:"btn btn-success mb-2" %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+
