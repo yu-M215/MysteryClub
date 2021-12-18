@@ -1,6 +1,6 @@
 <% mystery.comments.each do |comment| %>
   <div class="comment-box py-1 px-3">
-    <%= attachment_image_tag comment.user, :profile_image, size:"45x45", fallback:"profile_image.jpg", alt:"ProfileImage", class:"rounded-circle" %>
+    <%= attachment_image_tag comment.user, :profile_image, size:"40x40", fallback:"profile_image.jpg", alt:"ProfileImage", class:"rounded-circle" %>
     <span><%= comment.user.name %></span>
     <p class="mt-1 ml-3"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
     <% if comment.user == current_user %>
