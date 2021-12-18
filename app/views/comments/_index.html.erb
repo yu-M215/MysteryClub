@@ -1,10 +1,10 @@
 <% mystery.comments.each do |comment| %>
-  <div class="comment-box pt-1">
+  <div class="comment-box py-1 px-3">
     <%= attachment_image_tag comment.user, :profile_image, size:"45x45", fallback:"profile_image.jpg", alt:"ProfileImage", class:"rounded-circle" %>
     <span><%= comment.user.name %></span>
-    <p class="my-2 ml-3"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
+    <p class="mt-1 ml-3"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
     <% if comment.user == current_user %>
-      <div class="row ml-2 justify-content-end">
+      <div class="row justify-content-end">
         <!--クリックするとコメント編集フォームが出てくる-->
         <a data-toggle="collapse" href="#collapseCommentEdit_<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseCommentEdit_<%= comment.id %>">
           <i class="fas fa-edit mr-2"></i>
@@ -12,7 +12,7 @@
         <%= link_to mystery_comment_path(comment.mystery_id, comment.id), method: :delete, local: true do %>
           <i class="fas fa-trash-alt mr-2"></i>
         <% end %>
-        <p class="mb-1 mr-3"><%= l comment.created_at, format: :short %></p>
+        <p class="mb-1"><%= l comment.created_at, format: :short %></p>
       </div>
       <!--コメント編集フォーム-->
       <div class="collapse" id="collapseCommentEdit_<%= comment.id %>">
@@ -26,8 +26,8 @@
         <% end %>
       </div>
     <% else %>
-      <div class="row ml-2 justify-content-end">
-        <p class="mb-1 mr-3"><%= l comment.created_at, format: :short %></p>
+      <div class="row justify-content-end">
+        <p class="mb-1"><%= l comment.created_at, format: :short %></p>
       </div>
     <% end %>
   </div>
