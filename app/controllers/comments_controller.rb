@@ -16,8 +16,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find_by(id: params[:id]).destroy
-    redirect_back fallback_location: mystery_path(params[:mystery_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    # redirect_back fallback_location: mystery_path(params[:mystery_id])
   end
 
   private
