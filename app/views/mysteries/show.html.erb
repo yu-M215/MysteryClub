@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<div class="card" id="<%= @mystery.id %>-card">
+<div class="card">
   <!--カードのヘッダー部-->
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" id="mysteryTab" role="tablist">
@@ -36,13 +36,13 @@
             <%= attachment_image_tag @mystery, :image, size:"300x200", alt:"MysteryImage", fallback:"no_image.jpg" %>
           <% end %>
         </div>
-        <div class="col-7 card-body">
+        <div class="col-7 card-body" id="<%= @mystery.id %>-card">
           <div class="row">
             <h5 class="card-title"><%= @mystery.title %></h5>
             <span class="ml-5" id="favorite-btn">
               <%= render 'favorites/favorite-btn', mystery: @mystery %>
             </span>
-            <span class="ml-2" class="comment-count"><i class="fas fa-comments"></i> <%= @mystery.comments.count %></span>
+            <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @mystery.comments.count %></span>
           </div>
           <h6 class="card-subtitle">難易度：<span class="difficulty_level" data-score="<%= @mystery.difficulty_level %>"></span></h6>
           <p class="card-text"><%= safe_join(@mystery.discription.split("\n"),tag(:br)) %></p>
@@ -95,9 +95,11 @@
     <%= render 'comments/form', mystery: @mystery, comment: @comment %>
   </div>
   <!--コメント一覧-->
-  <div class="col-7 offset-1" class="comment-index">
+  <div class="col-7 offset-1">
     <h5><%= @mystery.comments.count %> 件のコメント：</h5>
-    <%= render 'comments/index', mystery: @mystery %>
+    <div class="comment-index">
+      <%= render 'comments/index', mystery: @mystery %>
+    </div>
   </div>
 </div>
 

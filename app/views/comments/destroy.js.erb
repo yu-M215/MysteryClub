@@ -1,1 +1,3 @@
 $("#<%= @comment.id %>-comment").remove();
+$("#<%= @mystery.id %>-card .comment-count").html('<i class="fas fa-comments"></i> <%= @mystery.comments.count %>');
+$("#comment-box-<%= @mystery.id %> h5").html("<%= @mystery.comments.count %> 件のコメント：");

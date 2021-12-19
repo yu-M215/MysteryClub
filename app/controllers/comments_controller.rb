@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.mystery_id = @mystery.id
     @comment.save
-    redirect_back fallback_location: mystery_path(params[:mystery_id])
   end
 
   def update
@@ -18,7 +17,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    # redirect_back fallback_location: mystery_path(params[:mystery_id])
   end
 
   private

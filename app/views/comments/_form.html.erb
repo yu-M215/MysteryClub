@@ -1,4 +1,4 @@
-  <%= form_with(model: [mystery,comment], html: { method: :post }, local: true) do |f| %>
+  <%= form_with(model: [mystery,comment], html: { method: :post }, remote: true) do |f| %>
     <div class="form-group">
       <%= f.text_area :comment, placeholder: "コメントを書いてね", rows:'5', class:"form-control" %>
     </div>
