@@ -1,4 +1,4 @@
-<div class="col-3 offset-4 mx-auto mb-2">
+<div class="col-3 offset-4 mx-auto my-3">
   <%= form_with model: mystery, url: sort_path, method: :get, local: true, class:"form-inline" do |f| %>
     <div class="form-group">
       <%= f.select :method, [['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['いいねが多い順','favorites'],['難易度の高い順','difficulty']], class:"form-control" %>

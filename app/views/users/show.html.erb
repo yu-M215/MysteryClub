@@ -1,6 +1,6 @@
 <% if @user == current_user %>
   <div class="row">
-    <h4 class="header col-2 offset-5">マイページ</h4>
+    <h3 class="header col-2 offset-5">マイページ</h3>
     <a class="mr-3" data-toggle="collapse" href="#confcollapse" role="button" aria-expanded="false" aria-controls="confcollapse">
       <i class="fas fa-cogs"></i>
     </a>
@@ -12,7 +12,7 @@
     </div>
   </div>
 <% else %>
-  <h4 class="header"><%= @user.name %> さんのプロフィール</h4>
+  <h3 class="header"><%= @user.name %> さんのプロフィール</h3>
   <div class="row mt-1 mb-3">
     <div class="offset-4 col-4 text-center">
       <%= render 'relationships/follow_btn', user: @user %>
