@@ -16,7 +16,7 @@
 
   <body>
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #8B4513;">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div>
           <%= link_to root_path, class:"navbar-brand" do %>
             <%= image_tag 'mysteryclub_logo.png', size: "180x80" %>
@@ -70,8 +70,8 @@
       <%= yield %>
       </div>
     </main>
-    <footer>
-      <p class="text-center">@MysteryClub by Yu Matsui</p>
+    <footer class="mt-5">
+      <p class="text-white">@MysteryClub by Yu Matsui</p>
     </footer>
   </body>
 </html>

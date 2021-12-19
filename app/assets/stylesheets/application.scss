@@ -32,6 +32,28 @@
   font-style: normal;
 }
 
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+
+main {
+  flex: 1;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+header, footer {
+  background-color: #8B4513;
+}
+
 .nav-item {
   font-size: 18px;
 }
@@ -40,7 +62,7 @@
   text-align: center;
 }
 
-.header, label, .nav-item, .action, .shared-link {
+.header, label, .nav-item, .action, .shared-link, footer {
   font-family: "cinecaption226";
 }
 
@@ -62,7 +84,7 @@
 
 .form-box {
   background-color: #FFF5EE;
-  border: double 4px brown;
+  border: groove 10px brown;
 }
 
 .form-box h4 {
@@ -86,5 +108,10 @@
 .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
     background: #660000;
     border: 3px solid #660000;
+    color: #FFFAFA;
+}
+
+.btn-primary.outline {
+    border: 3px solid #8B0000;
     color: #FFFAFA;
 }

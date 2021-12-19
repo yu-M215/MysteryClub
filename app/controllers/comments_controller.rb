@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    # redirect_back fallback_location: mystery_path(params[:mystery_id])
   end
 
   def destroy
