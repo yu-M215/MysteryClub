@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<div class="card">
+<div class="card" id="<%= @mystery.id %>-card">
   <!--カードのヘッダー部-->
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" id="mysteryTab" role="tablist">
@@ -36,7 +36,7 @@
             <%= attachment_image_tag @mystery, :image, size:"300x200", alt:"MysteryImage", fallback:"no_image.jpg" %>
           <% end %>
         </div>
-        <div class="col-7 card-body" id="<%= @mystery.id %>-card">
+        <div class="col-7 card-body">
           <div class="row">
             <h5 class="card-title"><%= @mystery.title %></h5>
             <span class="ml-5" id="favorite-btn">

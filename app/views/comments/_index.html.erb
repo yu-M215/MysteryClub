@@ -4,7 +4,9 @@
       <%= attachment_image_tag comment.user, :profile_image, size:"40x40", fallback:"profile_image.jpg", alt:"ProfileImage", class:"rounded-circle" %>
       <span><%= comment.user.name %></span>
     <% end %>
-    <p class="mt-1 ml-5"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
+    <div class="comment-text">
+      <p class="mt-1 ml-5"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
+    </div>
     <% if comment.user == current_user %>
       <div class="row justify-content-end">
         <!--クリックするとコメント編集フォームが出てくる-->
@@ -18,12 +20,12 @@
       </div>
       <!--コメント編集フォーム-->
       <div class="collapse" id="collapseCommentEdit_<%= comment.id %>">
-        <%= form_with(model:[mystery, comment], html: { method: :patch }, local: true) do |f| %>
-          <div class="form-group">
-            <%= f.text_area :comment, class:"form-control" %>
-          </div>
-          <div class="action">
-            <%= f.submit "変更", class:"btn btn-success mb-2" %>
+        <%= form_with(model:[mystery, comment], html: { method: :patch }, remote: true) do |f| %>
+          <div class="form-group row">
+            <%= f.text_area :comment, class:"form-control offset-1 col-9" %>
+            <div class="action">
+              <%= f.submit "変更", class:"btn btn-success ml-2 my-3" %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -1,4 +1,4 @@
-$("#<%= @mystery.id %>-card.comment-count").html('<i class="fas fa-comments"></i> <%= @mystery.comments.count %>');
+$("#<%= @mystery.id %>-card .comment-count").html('<i class="fas fa-comments"></i> <%= @mystery.comments.count %>');
 $("#comment-box-<%= @mystery.id %> h5").html("<%= @mystery.comments.count %> 件のコメント：");
 $("#comment-box-<%= @mystery.id %> .comment-index").html("<%= j(render 'comments/index', mystery: @mystery) %>");
 $("#comment_comment").val("");
