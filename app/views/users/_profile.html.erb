@@ -12,7 +12,7 @@
           <span>誕生日：非公開</span>
         <% end %>
         <% if user.introduction %>
-          <p class="card-text">
+          <p class="card-text mt-3">
             <%= safe_join(user.introduction.split("\n"),tag(:br)) %>
           </p>
         <% end %>

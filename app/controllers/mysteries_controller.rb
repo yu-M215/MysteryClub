@@ -27,6 +27,7 @@ class MysteriesController < ApplicationController
 
     if @mystery.save
       redirect_to mystery_path(@mystery.id)
+      flash[:notice] = "新しい謎解きを投稿しました！"
     else
       render "new"
     end
@@ -38,16 +39,20 @@ class MysteriesController < ApplicationController
   def update
     if @mystery.update(mystery_params)
       redirect_to mystery_path(@mystery)
+      flash[:notice] = "更新しました！"
     else
       render "edit"
-      flash[:notice] = "更新処理に失敗しました。"
     end
   end
 
   def destroy
-    @mystery.destroy
-    redirect_to mysteries_path
-    flash[:notice] = "投稿を削除しました。"
+    if @mystery.destroy
+      redirect_to mysteries_path
+      flash[:notice] = "投稿を削除しました。"
+    else
+      @comment = Comment.new
+      render 'show'
+    end
   end
 
   private

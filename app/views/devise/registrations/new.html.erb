@@ -1,8 +1,8 @@
+<%= render 'layouts/error', model: resource %>
 <div class="form-box offset-2 col-8 pb-3 pt-3">
   <h4 class="header mb-4">新規登録</h4>
 
   <%= form_with model: @user, url: user_registration_path, id:"new_user", class:"new_user", local: true do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="form-group row mb-4">
       <label class= "col-5">ニックネーム</label>

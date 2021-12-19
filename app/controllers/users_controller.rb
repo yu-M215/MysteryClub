@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites_id = @user.favorites.pluck(:mystery_id)
     @mysteries = Mystery.find(favorites_id)
-    render 'show'
   end
 
   def edit
@@ -21,9 +20,9 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       redirect_to user_path(@user)
+      flash[:notice] = "プロフィールを更新しました！"
     else
       render 'edit'
-      flash[:notice] = "プロフィールの更新に失敗しました"
     end
   end
 

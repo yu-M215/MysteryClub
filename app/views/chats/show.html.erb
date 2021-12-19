@@ -1,17 +1,17 @@
 <h4 class="header mb-3"><%= @user.name %>さん</h4>
 
-<div class="container chat-container px-3 py-3" id="">
+<div class="container chat-container px-3 py-3">
   <div id="chat-box">
     <%= render 'chats/index', chats: @chats %>
   </div>
 
-<%= form_with model: @chat, remote: true do |f| %>
-  <div class="form-group col-6 offset-3">
-    <%= f.text_area :message, rows:"3", class:"form-control" %>
-  </div>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <div class="action text-center">
-    <%= f.submit "送信", class:"btn btn-success" %>
-  </div>
-<% end %>
+  <%= form_with model: @chat, remote: true do |f| %>
+    <div class="form-group col-6 offset-3">
+      <%= f.text_area :message, rows:"3", class:"form-control" %>
+    </div>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <div class="action text-center">
+      <%= f.submit "送信", class:"btn btn-success" %>
+    </div>
+  <% end %>
 </div>
