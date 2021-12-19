@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <header class="shadow-sm">
+    <header class="shadow-sm mb-3">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div>
           <%= link_to root_path, class:"navbar-brand" do %>
@@ -57,6 +57,7 @@
           <div class="ml-auto">
             <%= form_with url: search_path, local: true, method: :get, class:"d-flex" do |f| %>
               <%= f.search_field :keyword, class: "form-control me-2", placeholder: "Search" %>
+              <%= f.hidden_field :model, value: "Both" %>
               <%= button_tag type:"submit", class:"btn btn-dark" do %>
                 <i class="fa fa-search"></i>
               <% end %>
@@ -66,12 +67,12 @@
       </nav>
     </header>
     <main>
-      <div class="container mt-3">
+      <div class="container pt-2">
       <%= yield %>
       </div>
     </main>
     <footer class="mt-5">
-      <p class="text-white">@MysteryClub by Yu Matsui</p>
+      <p class="text-white">ⒸMysteyClub by Yu Matsui</p>
     </footer>
   </body>
 </html>

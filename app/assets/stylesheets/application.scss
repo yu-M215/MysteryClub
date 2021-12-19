@@ -38,7 +38,6 @@ body {
   min-height: 100vh;
 }
 
-
 main {
   flex: 1;
 }
@@ -62,7 +61,7 @@ header, footer {
   text-align: center;
 }
 
-.header, label, .nav-item, .action, .shared-link, footer {
+.header, label, .nav-item, .action, .shared-link, footer, .search_header {
   font-family: "cinecaption226";
 }
 
