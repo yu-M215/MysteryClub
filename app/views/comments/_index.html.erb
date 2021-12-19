@@ -4,9 +4,7 @@
       <%= attachment_image_tag comment.user, :profile_image, size:"40x40", fallback:"profile_image.jpg", alt:"ProfileImage", class:"rounded-circle" %>
       <span><%= comment.user.name %></span>
     <% end %>
-    <div class="comment-text">
       <p class="mt-1 ml-5"><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
-    </div>
     <% if comment.user == current_user %>
       <div class="row justify-content-end">
         <!--クリックするとコメント編集フォームが出てくる-->
