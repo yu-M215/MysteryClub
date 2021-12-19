@@ -17,3 +17,24 @@ transition: 0.35s transform;
   background-color: #eee8aa;
   border-radius: 10px;
 }
+
+#follows-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.profile-list li {
+  font-family: "JNRfont_n";
+  text-align: center;
+  margin: 1em;
+  background-color: #deb887;
+  border-radius: 10px;
+}
+
+.profile-list a {
+  color: #990000;
+}
+
+.profile-list a:hover {
+  color: #550000;
+}

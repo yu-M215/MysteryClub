@@ -1,4 +1,4 @@
-<table class="table" id="follows-table">
+<table class="table offset-1 col-10" id="follows-table">
   <% users.each do |user| %>
     <tr>
       <td><%= attachment_image_tag user, :profile_image, size: "40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %></td>
