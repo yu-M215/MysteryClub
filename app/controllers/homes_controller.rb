@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @mysteries = Mystery.all
+    @mysteries = Mystery.limit(3).order('created_at DESC')
   end
 
   def about

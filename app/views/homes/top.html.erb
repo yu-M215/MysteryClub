@@ -1,13 +1,13 @@
-<h3 class="mb-3">ようこそ、MysteryClubへ！</h3>
+<h3 class="header mb-4">ようこそ、MysteryClubへ！</h3>
 
 <% unless user_signed_in? %>
-  <div class="offset-1">
+  <div class="col-6 offset-3 text-center">
     <p>MysteryClubは謎解き好きのためのSNSです。</br>
     <%= link_to "MysteryClubって？", about_path %></br>
-       初めての方は<%= link_to "こちら", new_user_registration_path %>から会員登録してください</p>
+    初めての方は <%= link_to "こちら", new_user_registration_path %> から会員登録してください</p>
   </div>
 <% end %>
 
-<h5 class="mt-2 mb-4">人気投稿</h5>
+<h4 class="header my-5">人気投稿</h4>
 
 <%= render 'mysteries/index', mysteries: @mysteries %>

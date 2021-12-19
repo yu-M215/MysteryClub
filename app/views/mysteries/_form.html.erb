@@ -1,42 +1,40 @@
 <div class="form-box offset-2 col-8 pb-3 pt-4">
 <%= form_with model: mystery, local:true do |f| %>
-  <div class="pl-3">
-    <div class="form-group row">
-      <%= f.label :title, "タイトル", class:"col-4" %>
-      <%= f.text_field :title, autofocus: true, class:"form-control col-7" %>
-    </div>
+  <div class="form-group row">
+    <%= f.label :title, "タイトル", class:"col-4" %>
+    <%= f.text_field :title, autofocus: true, class:"form-control col-7" %>
+  </div>
 
-    <div class="form-group row">
-      <%= f.label :image, "画像", class:"col-4" %>
-      <%= f.attachment_field :image, class:"form-control-file col-7" %>
-    </div>
-    <div class="form-group row">
-      <%= f.label :discription, "問題文", class:"col-4" %>
-      <%= f.text_area :discription, rows:'5', class:"form-control col-7" %>
-    </div>
-    <div class="form-group row">
-      <%= f.label :answer, "答え", class:"col-4" %>
-      <%= f.text_field :answer, class:"form-control col-7" %>
-    </div>
-    <div class="form-group row">
-      <%= f.label :answer_discription, "解説", class:"col-4" %>
-      <%= f.text_area :answer_discription, rows:'5', class:"form-control col-7" %>
-    </div>
-    <div class="form-group row">
-      <%= f.label :answer_image, "解説用画像", class:"col-4" %>
-      <%= f.attachment_field :answer_image, class:"form-control-file col-7" %>
-    </div>
-    <div class="form-group row" id="difficulty_level">
-      <label class="col-4">難易度</label>
-    </div>
-    <div class="form-group row">
-      <%= f.label :is_opened, "公開設定", class:"col-4" %>
-      <div class="radio-button-box">
-        <%= f.radio_button :is_opened, true %>
-        <%= f.label :is_opened, "公開", {value: true, style: "display: inline-block;"} %>
-        <%= f.radio_button :is_opened, false, class:"ml-3" %>
-        <%= f.label :is_opened, "非公開", {value: false, style: "display: inline-block;"} %>
-      </div>
+  <div class="form-group row">
+    <%= f.label :image, "画像", class:"col-4" %>
+    <%= f.attachment_field :image, class:"form-control-file col-7" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :discription, "問題文", class:"col-4" %>
+    <%= f.text_area :discription, rows:'5', class:"form-control col-7" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :answer, "答え", class:"col-4" %>
+    <%= f.text_field :answer, class:"form-control col-7" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :answer_discription, "解説", class:"col-4" %>
+    <%= f.text_area :answer_discription, rows:'5', class:"form-control col-7" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :answer_image, "解説用画像", class:"col-4" %>
+    <%= f.attachment_field :answer_image, class:"form-control-file col-7" %>
+  </div>
+  <div class="form-group row" id="difficulty_level">
+    <label class="col-4">難易度</label>
+  </div>
+  <div class="form-group row">
+    <%= f.label :is_opened, "公開設定", class:"col-4" %>
+    <div class="radio-button-box">
+      <%= f.radio_button :is_opened, true %>
+      <%= f.label :is_opened, "公開", {value: true, style: "display: inline-block;"} %>
+      <%= f.radio_button :is_opened, false, class:"ml-3" %>
+      <%= f.label :is_opened, "非公開", {value: false, style: "display: inline-block;"} %>
     </div>
   </div>
 

@@ -76,6 +76,11 @@ header, footer {
   background-color: #deb887;
 }
 
+// エラーメッセージが表示されたときのフォーム崩れを防止
+.field_with_errors {
+  display: contents;
+}
+
 .form-box p {
   font-family: "cinecaption226";
   color: red;
@@ -88,6 +93,10 @@ header, footer {
 
 .form-box h4 {
   background-color: #DEB887;
+}
+
+.form-box label {
+  text-align: center;
 }
 
 .btn-primary {
