@@ -1,6 +1,6 @@
-<div id="error-message-box" class="col-12 my-3">
+<div id="error-message-box" class="offset-3 col-6 mb-3">
   <% if model.errors.any? %>
-    <%= model.errors.count %> 件のエラーが発生しました</br>
+    <h5><%= model.errors.count %> 件のエラーが発生しました</h5>
     <% model.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
