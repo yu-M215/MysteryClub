@@ -24,5 +24,14 @@
 }
 
 .text-box p {
-  color: white;
+  color: #FFFAFA;
+}
+
+.text-box a {
+  color: #990000;
+  font-weight: bold;
+}
+
+.text-box a:hover {
+  color: #550000;
 }
