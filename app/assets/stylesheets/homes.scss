@@ -8,13 +8,15 @@
   background-size: cover;
   background-repeat: norepeat;
   background-position: center center;
-  position:relative;
+  position: relative;
   padding-top: 100px;
 }
 
 .text-box {
   background-color: rgba(200,200,200,0.4);
   position: absolute;
+  top: 140px;
+  left: 175px;
 }
 
 .text-box h3 {
