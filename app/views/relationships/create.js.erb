@@ -1,0 +1,4 @@
+$(".follow-btn").html("<%= j(render 'relationships/follow_btn', user: @user) %>");
+$(".follower-link").html("フォロワー<%= @user.followers.count %>");
+$(".follow-count").html("フォロワー： <%= @user.followers.count %>");
+$(".chat-link").html("<%= j(render 'chats/chat_link', user: @user) %>");

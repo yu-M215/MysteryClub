@@ -15,20 +15,18 @@
   <h3 class="header"><%= @user.name %> さんのプロフィール</h3>
   <div class="row mt-1 mb-3">
     <div class="offset-4 col-4 text-center">
-      <%= render 'relationships/follow_btn', user: @user %>
-      <% if current_user.following?(@user) && @user.following?(current_user) %>
-        <%= link_to chat_path(@user.id), class:"ml-3" do %>
-          DM <i class="fas fa-envelope"></i>
-        <% end %>
-      <% end %>
+      <span class="follow-btn">
+        <%= render 'relationships/follow_btn', user: @user %>
+      </span>
+      <span class="chat-link">
+        <%= render 'chats/chat_link', user: @user %>
+      </span>
     </div>
   </div>
 <% end %>
 
-<div id="<%= @user.id %>-contents">
-  <%= render 'users/profile', user: @user %>
-  <h4 class="content-header mb-3">投稿一覧</h4>
-  <div class="content-box">
-    <%= render 'mysteries/index', mysteries: @mysteries %>
-  </div>
+<%= render 'users/profile', user: @user %>
+<h4 class="content-header mb-3">投稿一覧</h4>
+<div class="content-box">
+  <%= render 'mysteries/index', mysteries: @mysteries %>
 </div>

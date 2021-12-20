@@ -1,0 +1,5 @@
+<% if current_user.following?(user) && user.following?(current_user) %>
+  <%= link_to chat_path(user.id), class:"ml-3" do %>
+    DM <i class="fas fa-envelope"></i>
+  <% end %>
+<% end %>

@@ -81,8 +81,10 @@
             <% end %>
           </h5>
           <p>フォロー： <%= @mystery.user.followings.count %></p>
-          <p>フォロワー： <%= @mystery.user.followers.count %></p>
-          <%= render 'relationships/follow_btn', user: @mystery.user %>
+          <p class="follow-count">フォロワー： <%= @mystery.user.followers.count %></p>
+          <span class="follow-btn">
+            <%= render 'relationships/follow_btn', user: @mystery.user %>
+          </span>
         </div>
       </div>
     </div>
