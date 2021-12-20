@@ -1,0 +1,2 @@
+$("#<%= @user.id %>-contents .content-box").html("<%= j(render 'mysteries/index', mysteries: @mysteries) %>");
+$(".content-header").html("いいねした投稿一覧");

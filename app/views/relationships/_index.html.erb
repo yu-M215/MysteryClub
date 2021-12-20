@@ -1,11 +1,15 @@
-<table class="table offset-1 col-10" id="follows-table">
-  <% users.each do |user| %>
-    <tr>
-      <td><%= attachment_image_tag user, :profile_image, size: "40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %></td>
-      <td><%= user.name %></td>
-      <td>フォロー <%= user.followings.count %></td>
-      <td>フォロワー <%= user.followers.count %></td>
-      <td><%= link_to "プロフィール", user_path(user) %></td>
-    </tr>
-  <% end %>
-</table>
+<% if users.exists? %>
+  <table class="table offset-1 col-10" id="follows-table">
+    <% users.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag user, :profile_image, size: "40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %></td>
+        <td><%= user.name %></td>
+        <td>フォロー <%= user.followings.count %></td>
+        <td>フォロワー <%= user.followers.count %></td>
+        <td><%= link_to "プロフィール", user_path(user) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p class="text-center mt-5">該当するユーザーはいません。</p>
+<% end %>
