@@ -1,5 +1,6 @@
 class ChatsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :follow_each_other, only: [:show]
 
   def show

@@ -14,8 +14,13 @@ transition: 0.35s transform;
 }
 
 .unsubscribe-message-box {
-  background-color: #eee8aa;
+  background-color: #fdede4;
   border-radius: 10px;
+  border: solid 3px #e6bfab ;
+}
+
+.unsubscribe-message-box h5 {
+  color: #CC0000;
 }
 
 #follows-table td {

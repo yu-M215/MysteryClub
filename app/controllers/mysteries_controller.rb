@@ -29,7 +29,7 @@ class MysteriesController < ApplicationController
       redirect_to mystery_path(@mystery.id)
       flash[:notice] = "新しい謎解きを投稿しました！"
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -41,7 +41,7 @@ class MysteriesController < ApplicationController
       redirect_to mystery_path(@mystery)
       flash[:notice] = "更新しました！"
     else
-      render "edit"
+      render 'edit'
     end
   end
 

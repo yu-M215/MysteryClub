@@ -1,10 +1,10 @@
 <% if @user == current_user %>
-  <div class="row">
-    <h3 class="header col-2 offset-5 mb-3">マイページ</h3>
+  <div class="row mb-3">
+    <h3 class="header col-2 offset-5">マイページ</h3>
     <a class="mr-3 my-auto" data-toggle="collapse" href="#confcollapse" role="button" aria-expanded="false" aria-controls="confcollapse">
       <i class="fas fa-cogs"></i>
     </a>
-    <div class="overflow-hidden">
+    <div class="overflow-hidden my-auto">
       <div class="collapse" id="confcollapse">
         <%= link_to "プロフィール編集", edit_user_path(@user), class:"mr-2" %>
         <%= link_to "退会", confirm_unsubscribe_path %>
@@ -13,16 +13,20 @@
   </div>
 <% else %>
   <h3 class="header"><%= @user.name %> さんのプロフィール</h3>
-  <div class="row mt-1 mb-3">
-    <div class="offset-4 col-4 text-center">
-      <span class="follow-btn">
-        <%= render 'relationships/follow_btn', user: @user %>
-      </span>
-      <span class="chat-link">
-        <%= render 'chats/chat_link', user: @user %>
-      </span>
+  <% if @user.is_actived %>
+    <div class="row mt-1 mb-3">
+      <div class="offset-4 col-4 text-center">
+        <span class="follow-btn">
+          <%= render 'relationships/follow_btn', user: @user %>
+        </span>
+        <span class="chat-link">
+          <%= render 'chats/chat_link', user: @user %>
+        </span>
+      </div>
     </div>
-  </div>
+    <% else %>
+      <p class="text-center">削除済みユーザー</p>
+    <% end %>
 <% end %>
 
 <%= render 'users/profile', user: @user %>

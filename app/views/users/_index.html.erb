@@ -10,6 +10,9 @@
             <%= user.name %>
           <% end %>
         </h5>
+        <% unless user.is_actived %>
+          <p class="text-center">削除済みユーザー</p>
+        <% end %>
       </div>
     </div>
   <% end %>

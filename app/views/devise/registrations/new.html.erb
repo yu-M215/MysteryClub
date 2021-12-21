@@ -1,7 +1,7 @@
 <div class="offset-2 col-8">
   <%= render 'layouts/errors', model: resource %>
   <div class="form-box pb-3 pt-3">
-    <h4 class="header mb-4">新規登録</h4>
+    <h4 class="header mb-4 mx-4">新規登録</h4>
 
     <%= form_with model: @user, url: user_registration_path, id:"new_user", class:"new_user", local: true do |f| %>
 
