@@ -4,16 +4,18 @@
   <div id="chat-box">
     <%= render 'chats/index', chats: @chats %>
   </div>
-  <div class="error-messages">
-    <%= render 'layouts/errors', model: @chat %>
+  <div class="col-6 offset-3">
+    <div class="error-messages">
+      <%= render 'layouts/errors', model: @chat %>
+    </div>
+    <%= form_with model: @chat, remote: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :message, rows:"3", class:"form-control" %>
+      </div>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <div class="action text-center">
+        <%= f.submit "送信", class:"btn btn-success" %>
+      </div>
+    <% end %>
   </div>
-  <%= form_with model: @chat, remote: true do |f| %>
-    <div class="form-group col-6 offset-3">
-      <%= f.text_area :message, rows:"3", class:"form-control" %>
-    </div>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <div class="action text-center">
-      <%= f.submit "送信", class:"btn btn-success" %>
-    </div>
-  <% end %>
 </div>
