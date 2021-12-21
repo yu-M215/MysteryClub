@@ -1,2 +1,2 @@
-$("#comment-box-<%= @mystery.id %> .comment-index").html("<%= j(render 'comments/index', mystery: @mystery) %>");
+$(".comment-index").html("<%= j(render 'comments/index', mystery: @mystery) %>");
 $(".error-messages").html("<%= j(render 'layouts/errors', model: @comment) %>");

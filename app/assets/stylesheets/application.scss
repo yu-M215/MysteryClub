@@ -50,7 +50,6 @@ footer {
 }
 
 header, footer {
-  // background-color: #996633;
   background-color: #A0522D;
 }
 
@@ -62,7 +61,7 @@ header, footer {
   text-align: center;
 }
 
-.header, label, .nav-item, .action, .shared-link, footer, .search_header {
+.header, label, .nav-item, .btn, .shared-link, footer, .search_header {
   font-family: "cinecaption226";
 }
 
@@ -135,4 +134,32 @@ header, footer {
 
 .notice {
   color: #00BB00;
+}
+
+#favorite-btn a {
+  color: #fa8072;
+}
+
+.favorite-count {
+  color: #fa8072;
+}
+
+.comment-count {
+  color: #6495ed;
+}
+
+.first-header {
+  color: #ffcc00;
+}
+
+.second-header {
+  color: #c0c0c0;
+}
+
+.third-header {
+  color: #816D46;
+}
+
+h2 {
+  background-color: #FFF5EE;
 }

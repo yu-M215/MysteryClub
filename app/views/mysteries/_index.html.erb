@@ -1,4 +1,4 @@
-<div class="card-deck mx-auto">
+<div class="card-deck mx-auto text-center">
   <% mysteries.each do |mystery| %>
     <!--is_openedがtrueのもののみ表示-->
     <% if mystery.is_opened %>
@@ -11,8 +11,8 @@
             <% end %>
           </h5>
           <p class="difficulty_level card-text" data-score="<%= mystery.difficulty_level %>"></p>
-          <span><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
-          <span class="ml-2"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
+          <span class="favorite-count"><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
+          <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
         </div>
       </div>
     <% else %>
@@ -27,8 +27,8 @@
               <% end %>
             </h5>
             <p class="difficulty_level card-text" data-score="<%= mystery.difficulty_level %>"></p>
-            <span><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
-            <span class="ml-2"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
+            <span class="favorite-count"><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
+            <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
           </div>
         </div>
       <% end %>
