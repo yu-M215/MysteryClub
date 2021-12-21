@@ -1,2 +1,3 @@
 $("#chat-box").html("<%= j(render 'chats/index', chats: @chats) %>");
 $("#chat_message").val("");
+$(".error-messages").html("<%= j(render 'layouts/errors', model: @chat) %>");

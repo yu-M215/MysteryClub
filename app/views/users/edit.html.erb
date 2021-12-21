@@ -1,36 +1,38 @@
-<%= render 'layouts/error', model: @user %>
 <h3 class="header mb-4">プロフィール編集</h3>
-<div class="form-box offset-2 col-8 pb-3 pt-4">
-  <%= form_with model:@user, local:true, method: :patch do |f| %>
-    <div class="pl-3">
-      <div class="form-group row">
-        <%= f.label :name, "ニックネーム", class:"col-4" %>
-        <%= f.text_field :name, class:"form-control col-7" %>
-      </div>
-      <div class="form-group row mt-4">
-        <%= f.label :introduction, "プロフィール", class:"col-4" %>
-        <%= f.text_area :introduction, rows:'5', class:"form-control col-7" %>
-      </div>
-      <div class="form-group row mt-4">
-        <%= f.label :profile_image, "プロフィール画像", class:"col-4" %>
-        <%= f.attachment_field :profile_image, class:"form-control-file col-7 pl-0" %>
-      </div>
-      <div class="form-group row mt-4">
-        <%= f.label :birthday, "誕生日", class:"col-4" %>
-        <%= f.date_select :birthday, {start_year: 1920, end_year: 2021} %>
-      </div>
-      <div class="form-group row mt-4 mb-5">
-        <%= f.label :is_birthday_opened, "誕生日の公開設定", class:"col-4" %>
-        <div class="form-check form-check-inline">
-          <%= f.radio_button :is_birthday_opened, true, class:"form-check-input" %>
-          <label class="form-check-label">公開</label>
-          <%= f.radio_button :is_birthday_opened, false, class:"form-check-input ml-2" %>
-          <label class="form-check-label">非公開</label>
+<div class="col-8 offset-2">
+  <%= render 'layouts/errors', model: @user %>
+  <div class="form-box pb-3 pt-4">
+    <%= form_with model:@user, local:true, method: :patch do |f| %>
+      <div class="pl-3">
+        <div class="form-group row">
+          <%= f.label :name, "ニックネーム", class:"col-4" %>
+          <%= f.text_field :name, class:"form-control col-7" %>
+        </div>
+        <div class="form-group row mt-4">
+          <%= f.label :introduction, "プロフィール", class:"col-4" %>
+          <%= f.text_area :introduction, rows:'5', class:"form-control col-7" %>
+        </div>
+        <div class="form-group row mt-4">
+          <%= f.label :profile_image, "プロフィール画像", class:"col-4" %>
+          <%= f.attachment_field :profile_image, class:"form-control-file col-7 pl-0" %>
+        </div>
+        <div class="form-group row mt-4">
+          <%= f.label :birthday, "誕生日", class:"col-4" %>
+          <%= f.date_select :birthday, {start_year: 1920, end_year: 2021} %>
+        </div>
+        <div class="form-group row mt-4 mb-5">
+          <%= f.label :is_birthday_opened, "誕生日の公開設定", class:"col-4" %>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :is_birthday_opened, true, class:"form-check-input" %>
+            <label class="form-check-label">公開</label>
+            <%= f.radio_button :is_birthday_opened, false, class:"form-check-input ml-2" %>
+            <label class="form-check-label">非公開</label>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="action text-center">
-      <%= f.submit "更新", class:"btn btn-primary" %>
-    </div>
-  <% end %>
+      <div class="action text-center">
+        <%= f.submit "更新", class:"btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>

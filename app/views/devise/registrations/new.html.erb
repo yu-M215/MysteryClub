@@ -1,44 +1,46 @@
-<%= render 'layouts/error', model: resource %>
-<div class="form-box offset-2 col-8 pb-3 pt-3">
-  <h4 class="header mb-4">新規登録</h4>
+<div class="offset-2 col-8">
+  <%= render 'layouts/errors', model: resource %>
+  <div class="form-box pb-3 pt-3">
+    <h4 class="header mb-4">新規登録</h4>
 
-  <%= form_with model: @user, url: user_registration_path, id:"new_user", class:"new_user", local: true do |f| %>
+    <%= form_with model: @user, url: user_registration_path, id:"new_user", class:"new_user", local: true do |f| %>
 
-    <div class="form-group row mb-4">
-      <label class= "col-5">ニックネーム</label>
-      <%= f.text_field :name, autofocus: true, placeholder: "ニックネーム", class:"form-control col-6" %>
-    </div>
+      <div class="form-group row mb-4">
+        <label class= "col-5">ニックネーム</label>
+        <%= f.text_field :name, autofocus: true, placeholder: "ニックネーム", class:"form-control col-6" %>
+      </div>
 
-    <div class="form-group row mb-4">
-      <label class= "col-5">メールアドレス</label>
-      <%= f.email_field :email, autocomplete: "email", placeholder: "xxx@gmail.com", class:"form-control col-6" %>
-    </div>
+      <div class="form-group row mb-4">
+        <label class= "col-5">メールアドレス</label>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "xxx@gmail.com", class:"form-control col-6" %>
+      </div>
 
-    <div class="form-group row mb-4">
-      <label class= "col-5">電話番号（ハイフンなし）</label>
-      <%= f.text_field :tellphone_number, placeholder: "00000000", class:"form-control col-6" %>
-    </div>
+      <div class="form-group row mb-4">
+        <label class= "col-5">電話番号（ハイフンなし）</label>
+        <%= f.text_field :tellphone_number, placeholder: "00000000", class:"form-control col-6" %>
+      </div>
 
-    <div class="form-group row mb-4">
-      <label class= "col-5">生年月日</label>
-      <%= f.date_select :birthday, {start_year: 1920, end_year: 2021} %>
-    </div>
+      <div class="form-group row mb-4">
+        <label class= "col-5">生年月日</label>
+        <%= f.date_select :birthday, {start_year: 1920, end_year: 2021} %>
+      </div>
 
-    <div class="form-group row mb-4">
-      <label class= "col-5">パスワード（6文字以上）</label>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード", class:"form-control col-6" %>
-    </div>
+      <div class="form-group row mb-4">
+        <label class= "col-5">パスワード（6文字以上）</label>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード", class:"form-control col-6" %>
+      </div>
 
-    <div class="form-group row mb-4">
-      <label class= "col-5">パスワード（確認用）</label>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"パスワード確認", class:"form-control col-6" %>
-    </div>
+      <div class="form-group row mb-4">
+        <label class= "col-5">パスワード（確認用）</label>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"パスワード確認", class:"form-control col-6" %>
+      </div>
 
-    <div class="action col-2 offset-5 mt-3">
-      <%= f.submit "登録", class:"btn btn-primary" %>
-    </div>
-  <% end %>
-  <p class="text-center mt-4">既に登録済みの方は、<%= link_to "こちら", new_user_session_path%>からログインしてください</p>
+      <div class="action col-2 offset-5 mt-3">
+        <%= f.submit "登録", class:"btn btn-primary" %>
+      </div>
+    <% end %>
+    <p class="text-center mt-4">既に登録済みの方は、<%= link_to "こちら", new_user_session_path%>からログインしてください</p>
+  </div>
 </div>
 
 

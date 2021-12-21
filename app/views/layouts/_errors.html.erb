@@ -1,5 +1,5 @@
 <% if model.errors.any? %>
-  <div id="error-message-box" class="offset-3 col-6 mb-3">
+  <div class="error-message-box mb-3">
     <h5><%= model.errors.count %> 件のエラーが発生しました</h5>
     <% model.errors.full_messages.each do |message| %>
       <li><%= message %></li>

@@ -1,2 +1,3 @@
 $("#send-message-<%= @chat.id %>").remove();
 $("#send-time-<%= @chat.id %>").remove();
+$(".error-messages").html("<%= j(render 'layouts/errors', model: @chat) %>");

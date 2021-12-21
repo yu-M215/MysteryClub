@@ -94,6 +94,9 @@
 <div class="row mt-5" id="comment-box-<%= @mystery.id %>">
   <!--コメント投稿フォーム-->
   <div class="col-4">
+    <div class="error-messages">
+      <%= render 'layouts/errors', model: @comment %>
+    </div>
     <%= render 'comments/form', mystery: @mystery, comment: @comment %>
   </div>
   <!--コメント一覧-->

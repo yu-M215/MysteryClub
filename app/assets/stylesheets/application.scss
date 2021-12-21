@@ -118,14 +118,14 @@ header, footer {
   color: #FFFAFA;
 }
 
-#error-message-box {
+.error-message-box {
   color: #CC0000;
   text-align: center;
   border: double 8px #CC0000;
   padding: 5px;
 }
 
-#error-message-box li {
+.error-message-box li {
   list-style: none;
 }
 
