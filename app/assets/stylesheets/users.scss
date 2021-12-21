@@ -27,16 +27,18 @@ transition: 0.35s transform;
   font-family: "JNRfont_n";
   text-align: center;
   margin: 1em;
-  background-color: #deb887;
-  border-radius: 10px;
+  background-color: #FFF5EE;
+  border-radius: 15px;
 }
 
 .profile-list a {
-  color: #990000;
+  color: #8B0000;
 }
 
 .profile-list a:hover {
-  color: #550000;
+  color: #FFF5EE;
+  background-color: #8B0000;
+  border-radius: 15px;
 }
 
 .content-header {
