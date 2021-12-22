@@ -13,10 +13,20 @@ class RelationshipsController < ApplicationController
 
   # フォロー一覧
   def followings
+    @followings = @user.followings.page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # フォロワー一覧
   def followers
+    @followers = @user.followers.page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

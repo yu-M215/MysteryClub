@@ -2,28 +2,18 @@
 
 <!--検索結果の絞り込み-->
 <%= form_with url: search_path, method: :get, local: true, class:"text-center my-4" do |f| %>
-  <%= f.radio_button :model, "Both" %> すべて
+  <%= f.radio_button :model, "Mystery", class:"ml-3", checked: true %> 謎解き
   <%= f.radio_button :model, "User", class:"ml-3" %> ユーザー
-  <%= f.radio_button :model, "Mystery", class:"ml-3" %> 投稿
   <%= f.hidden_field :keyword, value: @keyword %>
-  <%= f.submit "絞り込み", class:"ml-3" %>
+  <%= f.submit "切り替え", class:"ml-3" %>
 <% end %>
 
 <!--絞り込みの選択によって表示内容を変える-->
 <% case @model %>
-<% when "Both" %>
-  <h5 class="search_header col-2">謎解き</h5>
-  <span class="ml-5 py-3"><%= @mystery_result %></span>
-  <%= render 'mysteries/index', mysteries: @mysteries %>
-  <h5 class="search_header col-2">ユーザー</h5>
-  <span class="ml-5 py-3"><%= @user_result %></span>
-  <%= render 'users/index', users: @users %>
-
 <% when "User" %>
   <h5 class="search_header col-2">ユーザー</h5>
   <span class="ml-5 py-3"><%= @user_result %></span>
   <%= render 'users/index', users: @users %>
-
 <% when "Mystery" %>
   <h5 class="search_header col-2">謎解き</h5>
   <span class="ml-5 py-3"><%= @mystery_result %></span>

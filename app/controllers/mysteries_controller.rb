@@ -4,12 +4,12 @@ class MysteriesController < ApplicationController
   before_action :set_mystery, only:[:show,:edit,:update,:destroy]
 
   def index
-    @mysteries = Mystery.all
+    @mysteries = Mystery.opened.page(params[:page]).reverse_order
   end
 
   def sort
     method = params[:method]
-    @mysteries = Mystery.sort(method)
+    @mysteries = Mystery.opened.sort(method).page(params[:page])
     render 'index'
   end
 

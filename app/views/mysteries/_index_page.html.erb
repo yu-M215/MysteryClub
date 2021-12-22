@@ -24,7 +24,7 @@
   <% end %>
 </div>
 
-<%= paginate @mysteries %>
+<%= paginate mysteries, remote: true %>
 
 <script>
   $('.difficulty_level').raty({

@@ -5,13 +5,25 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @mysteries = Mystery.where(user_id: @user.id)
+    if @user == current_user
+      @mysteries = current_user.mysteries.page(params[:page]).reverse_order
+    else
+      @mysteries = Mystery.opened.where(user_id: @user.id).page(params[:page]).reverse_order
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def favorites
     @user = User.find(params[:id])
     favorites_id = @user.favorites.pluck(:mystery_id)
-    @mysteries = Mystery.find(favorites_id)
+    @mysteries = Mystery.opened.where(id: favorites_id).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
