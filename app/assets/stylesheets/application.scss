@@ -163,3 +163,27 @@ header, footer {
 h2 {
   background-color: #FFF5EE;
 }
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #993300;
+  margin: 2px;
+}
+
+.pagination>.active>.page-link {
+  background: #993300;
+  color: white;
+  border-radius: 20px;
+  border: none;
+}
+
+.pagination>li>a:hover {
+  border-radius: 20px;
+  border: none;
+  background: #f5deb3;
+  color: #993300;
+}
