@@ -5,7 +5,7 @@
     <%= link_to edit_mystery_path(@mystery) do %>
       <i class="fas fa-edit mr-1"></i>
     <% end %>
-    <%= link_to mystery_path(@mystery), method: :destroy, data: {confirm: "編集ページから非公開に変更もできますが、削除してよろしいですか？"} do %>
+    <%= link_to mystery_path(@mystery), method: :delete, data: {confirm: "編集ページから非公開に変更もできますが、削除してよろしいですか？"} do %>
       <i class="fas fa-trash-alt ml-1"></i>
     <% end %>
   </div>

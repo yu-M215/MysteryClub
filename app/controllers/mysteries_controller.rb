@@ -9,7 +9,7 @@ class MysteriesController < ApplicationController
 
   def sort
     method = params[:method]
-    @mysteries = Mystery.opened.sort(method).page(params[:page])
+    @mysteries = Mystery.sort(method).opened.page(params[:page])
     render 'index'
   end
 
