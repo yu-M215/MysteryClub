@@ -14,6 +14,9 @@ class MysteriesController < ApplicationController
   end
 
   def show
+    if !@mystery.is_opened && @mystery.user != current_user
+      redirect_to mysteries_path, notice: "非公開投稿のため、アクセスできません。"
+    end
     @comment = Comment.new
   end
 
