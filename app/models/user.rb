@@ -30,10 +30,12 @@ class User < ApplicationRecord
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
+
   # フォロー解除用
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
+
   # 引数で渡したユーザーをフォローしているか
   def following?(user)
     followings.include?(user)

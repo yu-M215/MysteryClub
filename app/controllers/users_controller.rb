@@ -1,15 +1,14 @@
 class UsersController < ApplicationController
-
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: %i[edit update]
 
   def show
     @user = User.find(params[:id])
-    if @user == current_user
-      @mysteries = current_user.mysteries.page(params[:page]).reverse_order
-    else
-      @mysteries = Mystery.opened.where(user_id: @user.id).page(params[:page]).reverse_order
-    end
+    @mysteries = if @user == current_user
+                   current_user.mysteries.page(params[:page]).reverse_order
+                 else
+                   Mystery.opened.where(user_id: @user.id).page(params[:page]).reverse_order
+                 end
     respond_to do |format|
       format.html
       format.js
@@ -26,8 +25,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -54,7 +52,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name,:introduction,:profile_image,:birthday,:is_birthday_opened)
+    params.require(:user).permit(:name, :introduction, :profile_image, :birthday, :is_birthday_opened)
   end
 
   # 自分以外のユーザーのプロフィール編集画面にアクセスできないようにする
@@ -64,5 +62,4 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
 end

@@ -10,7 +10,7 @@ describe '投稿のテスト' do
     fill_in 'user[password_confirmation]', with: '123456'
     find("input[name='commit']").click
   end
-  let!(:mystery) { create(:mystery,title:'hoge',discription:'body',answer:'hoge',answer_discription:'hoge',difficulty_level:3.0,is_opened:true,user_id:1) }
+  let!(:mystery) { create(:mystery, title: 'hoge', discription: 'body', answer: 'hoge', answer_discription: 'hoge', difficulty_level: 3.0, is_opened: true, user_id: 1) }
   describe 'トップ画面(root_path)のテスト' do
     before do
       visit root_path
@@ -33,18 +33,25 @@ describe '投稿のテスト' do
         expect(page).to have_selector '.card'
       end
       it "mysteryのタイトルを表示し、詳細のリンクが表示されているか" do
-          (1..5).each do |i|
-            Mystery.create(title:'hoge'+i.to_s,discription:'body'+i.to_s,answer:'answer'+i.to_s,answer_discription:'answerbody'+i.to_s,difficulty_level:1.0,is_opened:true,user_id:1)
-          end
-          visit mysteries_path
-          Mystery.all.each_with_index do |mystery,i|
-            # ヘッダーとロゴのリンク数、投稿の順序から逆算
-            j = 10 - i
-            expect(page).to have_content mystery.title
-
-            show_link = find_all('a')[j]
-            expect(show_link[:href]).to eq mystery_path(mystery)
-          end
+        (1..5).each do |i|
+          Mystery.create(
+            title: "hoge#{i}.to_s",
+            discription: "body#{i}.to_s",
+            answer: "answer#{i}.to_s",
+            answer_discription: "answerbody#{i}.to_s",
+            difficulty_level: 1.0,
+            is_opened: true,
+            user_id: 1
+          )
+        end
+        visit mysteries_path
+        Mystery.all.each_with_index do |mystery, i|
+          # ヘッダーとロゴのリンク数、投稿の順序から逆算
+          j = 10 - i
+          expect(page).to have_content mystery.title
+          show_link = find_all('a')[j]
+          expect(show_link[:href]).to eq mystery_path(mystery)
+        end
       end
     end
     context '投稿処理に関するテスト' do
@@ -52,10 +59,10 @@ describe '投稿のテスト' do
         visit new_mystery_path
       end
       it '投稿に成功しサクセスメッセージが表示されるか' do
-        fill_in 'mystery[title]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number:20)
-        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number:20)
+        fill_in 'mystery[title]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number: 20)
+        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number: 20)
         find('#difficulty_level').click
         click_button '作成'
         expect(page).to have_content '投稿'
@@ -66,10 +73,10 @@ describe '投稿のテスト' do
         expect(current_path).to eq('/mysteries')
       end
       it '投稿後のリダイレクト先は正しいか' do
-        fill_in 'mystery[title]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number:20)
-        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number:20)
+        fill_in 'mystery[title]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number: 20)
+        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number: 20)
         find('#difficulty_level').click
         click_button '作成'
         expect(page).to have_current_path mystery_path(Mystery.last)
@@ -77,7 +84,7 @@ describe '投稿のテスト' do
     end
     context '削除のテスト' do
       it 'mysteryの削除' do
-        expect{ mystery.destroy }.to change{ Mystery.count }.by(-1)
+        expect { mystery.destroy }.to change { Mystery.count }.by(-1)
       end
     end
   end
@@ -95,7 +102,7 @@ describe '投稿のテスト' do
       it 'Editの遷移先は編集画面か' do
         edit_link = find_all('a')[5]
         edit_link.click
-        expect(current_path).to eq('/mysteries/' + mystery.id.to_s + '/edit')
+        expect(current_path).to eq("/mysteries/#{mystery.id}.to_s/edit")
       end
     end
   end
@@ -116,10 +123,10 @@ describe '投稿のテスト' do
     end
     context '更新処理に関するテスト' do
       it '更新に成功しサクセスメッセージが表示されるか' do
-        fill_in 'mystery[title]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number:20)
-        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number:20)
+        fill_in 'mystery[title]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number: 20)
+        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number: 20)
         find('#difficulty_level').click
         click_button '更新！'
         expect(page).to have_content '更新'
@@ -133,10 +140,10 @@ describe '投稿のテスト' do
         expect(page).to have_content 'エラー'
       end
       it '更新後のリダイレクト先は正しいか' do
-        fill_in 'mystery[title]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number:20)
-        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number:5)
-        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number:20)
+        fill_in 'mystery[title]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[discription]', with: Faker::Lorem.characters(number: 20)
+        fill_in 'mystery[answer]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'mystery[answer_discription]', with: Faker::Lorem.characters(number: 20)
         find('#difficulty_level').click
         click_button '更新！'
         expect(page).to have_current_path mystery_path(mystery)

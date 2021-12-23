@@ -5,7 +5,6 @@ class CreateFavorites < ActiveRecord::Migration[5.2]
       t.bigint :user_id, null: false
 
       t.timestamps
-
     end
     add_foreign_key :favorites, :users
     add_foreign_key :favorites, :mysteries

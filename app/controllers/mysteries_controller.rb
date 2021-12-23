@@ -1,7 +1,6 @@
 class MysteriesController < ApplicationController
-
   before_action :authenticate_user!
-  before_action :set_mystery, only:[:show,:edit,:update,:destroy]
+  before_action :set_mystery, only: %i[show edit update destroy]
 
   def index
     @mysteries = Mystery.opened.page(params[:page]).reverse_order
@@ -36,8 +35,7 @@ class MysteriesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @mystery.update(mystery_params)
@@ -61,11 +59,10 @@ class MysteriesController < ApplicationController
   private
 
   def mystery_params
-    params.require(:mystery).permit(:title,:discription,:image,:answer,:answer_image,:answer_discription,:difficulty_level,:is_opened)
+    params.require(:mystery).permit(:title, :discription, :image, :answer, :answer_image, :answer_discription, :difficulty_level, :is_opened)
   end
 
   def set_mystery
     @mystery = Mystery.find(params[:id])
   end
-
 end

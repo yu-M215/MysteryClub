@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-
   # devise関連のルーティング
-  devise_for :users, skip: [:passwords,], controllers: {
+  devise_for :users, skip: [:passwords], controllers: {
     registrations: "users/registrations",
     sessions: 'users/sessions'
   }
@@ -16,9 +15,9 @@ Rails.application.routes.draw do
   get 'sort' => 'mysteries#sort', as: 'sort'
   resources :mysteries do
     # コメント機能
-    resources :comments, only:[:create,:update,:destroy]
+    resources :comments, only: %i[create update destroy]
     # いいね機能
-    resource :favorites, only:[:create,:destroy]
+    resource :favorites, only: %i[create destroy]
   end
 
   # 退会機能のルーティング
@@ -32,13 +31,12 @@ Rails.application.routes.draw do
   get 'users/:id/favorites' => 'users#favorites', as: 'favorites_index'
 
   # ユーザープロフィール関連のルーティング
-  resources :users, only:[:show,:edit,:update] do
-    resource :relationships, only: [:create, :destroy]
+  resources :users, only: %i[show edit update] do
+    resource :relationships, only: %i[create destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
   # DM機能のルーティング
-  resources :chats, only: [:show,:create,:destroy]
-
+  resources :chats, only: %i[show create destroy]
 end

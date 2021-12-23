@@ -6,7 +6,6 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.text :comment, null: false
 
       t.timestamps
-
     end
     add_foreign_key :comments, :users
     add_foreign_key :comments, :mysteries

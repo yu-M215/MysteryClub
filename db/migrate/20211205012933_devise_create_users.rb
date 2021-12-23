@@ -40,7 +40,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :is_birthday_opened, null: false, default: true
       t.boolean :is_actived, null: false, default: true
 
-
       t.timestamps null: false
     end
 
