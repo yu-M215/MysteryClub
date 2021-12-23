@@ -4,12 +4,12 @@
   <% unless user_signed_in? %>
       <p>MysteryClubは謎解き好きのためのSNSです。</br>
       初めての方は <%= link_to "こちら", new_user_registration_path %> から会員登録してください</br>
-      ＊ 投稿の詳細を見るにはログインが必要です</p>
+      ＊投稿の詳細を見るにはログインが必要です</p>
   <% end %>
 </div>
 
 <h3 class="header mt-5">人気投稿</h3>
-
+<% unless @mysteries %>
 <div class="row mt-4">
   <div class="col-3 offset-1 mt-5 text-center">
     <h4 class="second-header"><i class="fas fa-crown"></i> 2位</h4>
@@ -63,3 +63,40 @@
     </div>
   </div>
 </div>
+<% else %>
+  <div class="row text-center">
+    <% @mysteries.each do |mystery| %>
+      <div class="col-3">
+        <div class="card mb-3">
+          <%= attachment_image_tag(mystery, :image, :fill, 250, 180, alt:"Mysteryimage", fallback: "no_image.jpg", size:"250x180", class:"card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <% if mystery.is_opened %>
+                <%= link_to mystery_path(mystery.id) do %>
+                  <%= mystery.title %>
+                <% end %>
+              <% else %>
+                <%= link_to mystery_path(mystery.id) do %>
+                  <%= mystery.title %> <i class="fas fa-lock"></i>
+                <% end %>
+              <% end %>
+            </h5>
+            <p class="difficulty_level card-text" data-score="<%= mystery.difficulty_level %>"></p>
+            <span class="favorite-count"><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
+            <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <script>
+    $('.difficulty_level').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  </script>
+<% end %>
