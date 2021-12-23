@@ -14,7 +14,7 @@
 
     <% if devise_mapping.rememberable? %>
       <div class="field mb-2 mt-5 d-flex justify-content-center">
-        <%= f.check_box :remember_me %>
+        <%= f.check_box :remember_me, id:"login-keep-check" %>
         <label class="ml-1">ログイン状態を保持する</label>
       </div>
     <% end %>
