@@ -44,7 +44,19 @@
             </span>
             <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @mystery.comments.count %></span>
           </div>
-          <h6 class="card-subtitle">難易度：<span class="difficulty_level" data-score="<%= @mystery.difficulty_level %>"></span></h6>
+          <h6 class="card-subtitle">難易度：<span class="difficulty_level"></span></h6>
+          <!--難易度の星の表示-->
+          <script>
+          $('.difficulty_level').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @mystery.difficulty_level %>,
+          });
+          </script>
           <p class="card-text mt-3"><%= safe_join(@mystery.discription.split("\n"),tag(:br)) %></p>
         </div>
       </div>
@@ -111,14 +123,3 @@
     </div>
   </div>
 </div>
-
-<!--難易度の星の表示-->
-<script>
-  $('.difficulty_level').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/images/'
-  });
-</script>

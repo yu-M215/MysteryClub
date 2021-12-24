@@ -21,7 +21,19 @@
             <%= @second_mystery.title %>
           <% end %>
         </h5>
-        <p class="difficulty_level card-text" data-score="<%= @second_mystery.difficulty_level %>"></p>
+        <p class="card-text" id="difficulty_level_second"></p>
+        <!--難易度の星の表示-->
+        <script>
+        $('#difficulty_level_second').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= @second_mystery.difficulty_level %>,
+        });
+        </script>
         <span class="favorite-count"><i class="fas fa-heart"></i> <%= @second_mystery.favorites.count %></span>
         <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @second_mystery.comments.count %></span>
         <p class="mt-2 mb-0">by <%= @second_mystery.user.name %>さん</p>
@@ -38,7 +50,19 @@
             <%= @first_mystery.title %>
           <% end %>
         </h5>
-        <p class="difficulty_level card-text" data-score="<%= @first_mystery.difficulty_level %>"></p>
+        <p class="card-text" id="difficulty_level_first"></p>
+        <!--難易度の星の表示-->
+        <script>
+        $('#difficulty_level_first').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= @first_mystery.difficulty_level %>,
+        });
+        </script>
         <span class="favorite-count"><i class="fas fa-heart"></i> <%= @first_mystery.favorites.count %></span>
         <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @first_mystery.comments.count %></span>
         <p class="mt-2 mb-0">by <%= @first_mystery.user.name %>さん</p>
@@ -55,7 +79,19 @@
             <%= @third_mystery.title %>
           <% end %>
         </h5>
-        <p class="difficulty_level card-text" data-score="<%= @third_mystery.difficulty_level %>"></p>
+         <p class="card-text" id="difficulty_level_third"></p>
+        <!--難易度の星の表示-->
+        <script>
+        $('#difficulty_level_third').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= @third_mystery.difficulty_level %>,
+        });
+        </script>
         <span class="favorite-count"><i class="fas fa-heart"></i> <%= @third_mystery.favorites.count %></span>
         <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @third_mystery.comments.count %></span>
         <p class="mt-2 mb-0">by <%= @third_mystery.user.name %>さん</p>
@@ -89,14 +125,4 @@
       </div>
     <% end %>
   </div>
-
-  <script>
-    $('.difficulty_level').raty({
-      readOnly: true,
-      score: function() {
-        return $(this).attr('data-score');
-      },
-      path: '/assets/images/'
-    });
-  </script>
 <% end %>

@@ -15,7 +15,19 @@
               <% end %>
             <% end %>
           </h5>
-          <p class="difficulty_level card-text" data-score="<%= mystery.difficulty_level %>"></p>
+          <p class="card-text" id="difficulty_level_<%= mystery.id %>"></p>
+          <!--難易度の星の表示-->
+          <script>
+          $('#difficulty_level_<%= mystery.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= mystery.difficulty_level %>,
+          });
+          </script>
           <span class="favorite-count"><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
           <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
         </div>
@@ -25,13 +37,3 @@
 </div>
 
 <%= paginate mysteries, remote: true %>
-
-<script>
-  $('.difficulty_level').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/images/'
-  });
-</script>
