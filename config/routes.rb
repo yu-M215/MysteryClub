@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about', as: 'about'
 
   # 検索機能のルーティング
-  get '/search' => 'searches#search', as: 'search'
+  get 'search' => 'searches#search', as: 'search'
 
   # 謎解き投稿関連のルーティング
   get 'sort' => 'mysteries#sort', as: 'sort'
