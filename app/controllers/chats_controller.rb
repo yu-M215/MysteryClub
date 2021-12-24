@@ -8,7 +8,7 @@ class ChatsController < ApplicationController
     user_room = UserRoom.find_by(user_id: @user.id, room_id: rooms)
     # ルームがなければ作成
     if user_room.nil?
-      @room = Room.if
+      @room = Room.new
       @room.save
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
