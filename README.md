@@ -27,6 +27,14 @@
 ちょっとした時間つぶしに謎解きがしたくなった時。
 
 ## 設計書
+画面遷移図
+- https://drive.google.com/file/d/1TcgkRf9fpVUOs5L5s7FnGW0uVZXYNN1g/view?usp=sharing
+ER図
+- https://app.diagrams.net/?libs=general;er#G13DvGbklUaa2EKkE_r_pAamTOGkhAcS1R
+テーブル定義書
+- https://docs.google.com/spreadsheets/d/1yUKUUCyJqHrAFxbVnswslWQ5X8jzFPiuiMLHfjauqhw/edit?usp=sharing
+詳細設計書
+- https://docs.google.com/spreadsheets/d/1UOklKqkNl3ZVLxgM4Vy373brsLk30RCPMt7SVvbmdeA/edit?usp=sharing
 
 ## チャレンジ要素一覧
 
@@ -41,19 +49,12 @@ https://docs.google.com/spreadsheets/d/1LcNkgChpmxOPRxkJgbUDs4If_yqMhnSeZBowCuhh
 - IDE：Cloud9
 
 ## 使用素材
-・画像
-  https://unsplash.com/photos/jKU2NneZAbI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
-  https://www.ac-illust.com/main/detail.php?id=22236633&word=%E3%81%8A%E8%B1%86%E8%85%90%E2%91%A1&searchId=1739785948
-  https://www.ac-illust.com/main/detail.php?id=517001&word=%E5%B9%B3%E6%88%9028%E5%B9%B4%E3%81%AE%E7%A1%AC%E8%B2%A8&searchId=2427863579
-  https://www.ac-illust.com/main/detail.php?id=22299667&word=%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3%E3%81%AE%E3%82%AD%E3%83%83%E3%82%BA%E3%82%B7%E3%83%A5%E3%83%BC%E3%82%BA&searchId=1164607346
-  https://www.ac-illust.com/main/detail.php?id=22281854&word=%E5%89%B2%E3%82%8A%E7%AE%B8%EF%BC%98%EF%BC%88%E3%82%AB%E3%83%A9%E3%83%BC%EF%BC%89&searchId=858519544
-  https://www.ac-illust.com/main/detail.php?id=22354587&word=%E3%82%A4%E3%82%AB&searchId=1107156100
-  https://www.ac-illust.com/main/detail.php?id=22361241&word=%E3%81%8B%E3%82%8F%E3%81%84%E3%81%84%E7%BE%8A%E3%81%AE%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%EF%BC%88%E7%B7%9A%E3%81%AA%E3%81%97%EF%BC%89&searchId=3917587571
-  https://www.ac-illust.com/main/detail.php?id=1392322&word=%E3%82%AA%E3%82%AA%E3%82%AB%E3%83%9F%E3%81%AE%E9%A0%AD&searchId=1954292394
+画像
+- https://unsplash.com/photos/jKU2NneZAbI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
   
-・フォント
-  しねきゃぷしょん
-  http://www.vector.co.jp/soft/data/writing/se314690.html
-  国鉄風フォント
-  http://tabi-mo.travel.coocan.jp/font.htm
+フォント
+しねきゃぷしょん
+- http://www.vector.co.jp/soft/data/writing/se314690.html
+国鉄風フォント
+- http://tabi-mo.travel.coocan.jp/font.htm
 
