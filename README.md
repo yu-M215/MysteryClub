@@ -27,14 +27,14 @@
 ちょっとした時間つぶしに謎解きがしたくなった時。
 
 ## 設計書
-画面遷移図
-- https://drive.google.com/file/d/1TcgkRf9fpVUOs5L5s7FnGW0uVZXYNN1g/view?usp=sharing
-ER図
-- https://app.diagrams.net/?libs=general;er#G13DvGbklUaa2EKkE_r_pAamTOGkhAcS1R
-テーブル定義書
-- https://docs.google.com/spreadsheets/d/1yUKUUCyJqHrAFxbVnswslWQ5X8jzFPiuiMLHfjauqhw/edit?usp=sharing
-詳細設計書
-- https://docs.google.com/spreadsheets/d/1UOklKqkNl3ZVLxgM4Vy373brsLk30RCPMt7SVvbmdeA/edit?usp=sharing
+- 画面遷移図
+  https://drive.google.com/file/d/1TcgkRf9fpVUOs5L5s7FnGW0uVZXYNN1g/view?usp=sharing
+- ER図
+  https://app.diagrams.net/?libs=general;er#G13DvGbklUaa2EKkE_r_pAamTOGkhAcS1R
+- テーブル定義書
+  https://docs.google.com/spreadsheets/d/1yUKUUCyJqHrAFxbVnswslWQ5X8jzFPiuiMLHfjauqhw/edit?usp=sharing
+- 詳細設計書
+  https://docs.google.com/spreadsheets/d/1UOklKqkNl3ZVLxgM4Vy373brsLk30RCPMt7SVvbmdeA/edit?usp=sharing
 
 ## チャレンジ要素一覧
 
@@ -49,12 +49,12 @@ https://docs.google.com/spreadsheets/d/1LcNkgChpmxOPRxkJgbUDs4If_yqMhnSeZBowCuhh
 - IDE：Cloud9
 
 ## 使用素材
-画像
-- https://unsplash.com/photos/jKU2NneZAbI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+- 画像
+  - https://unsplash.com/photos/jKU2NneZAbI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
   
-フォント
-しねきゃぷしょん
-- http://www.vector.co.jp/soft/data/writing/se314690.html
-国鉄風フォント
-- http://tabi-mo.travel.coocan.jp/font.htm
+- フォント
+  - しねきゃぷしょん
+    http://www.vector.co.jp/soft/data/writing/se314690.html
+  - 国鉄風フォント
+    http://tabi-mo.travel.coocan.jp/font.htm
 
