@@ -1,6 +1,7 @@
 class MysteriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mystery, only: %i[show edit update destroy]
+  before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
     @mysteries = Mystery.opened.page(params[:page]).reverse_order
@@ -64,5 +65,14 @@ class MysteriesController < ApplicationController
 
   def set_mystery
     @mystery = Mystery.find(params[:id])
+  end
+
+  # 自分以外のユーザーの投稿は編集削除できないようにする
+  def ensure_correct_user
+    @user = @mystery.user
+    unless @user == current_user
+      redirect_to mystery_path(@mystery)
+      flash[:notice] = "アクセスできません。"
+    end
   end
 end

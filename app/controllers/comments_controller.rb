@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mystery
+  before_action :ensure_correct_user, only: %i[update destroy]
 
   def create
     @comment = current_user.comments.new(comment_params)
@@ -9,12 +10,10 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
     @comment.update(comment_params)
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
   end
 
@@ -26,5 +25,15 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  # 自分以外のユーザーの投稿は編集削除できないようにする
+  def ensure_correct_user
+    @comment = Comment.find(params[:id])
+    @user = @comment.user
+    unless @user == current_user
+      redirect_to mystery_path(@mystery)
+      flash[:notice] = "アクセスできません。"
+    end
   end
 end
