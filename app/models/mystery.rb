@@ -64,10 +64,6 @@ class Mystery < ApplicationRecord
       visited_id: self.user_id,
       action: 'comment'
     )
-    # 自分の投稿に対するコメントの場合は、通知済みとする
-    # if notification.visitor_id == notification.visited_id
-    #   notification.checked = true
-    # end
     notification.save if notification.valid?
   end
 

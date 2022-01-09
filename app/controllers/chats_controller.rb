@@ -23,6 +23,8 @@ class ChatsController < ApplicationController
     @chats = Chat.where(room_id: params[:chat][:room_id])
     @chat = current_user.chats.new(chat_params)
     @chat.save
+    # 通知の作成
+    @chat.create_notification_chat(current_user)
   end
 
   def destroy
