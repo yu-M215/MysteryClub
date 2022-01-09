@@ -3,6 +3,7 @@ class Mystery < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+　has_many :notifications, dependent: :destroy
 
   # バリデーション
   validates :title, :discription, :answer, :answer_discription, :difficulty_level, presence: true
