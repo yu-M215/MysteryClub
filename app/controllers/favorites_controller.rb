@@ -5,6 +5,10 @@ class FavoritesController < ApplicationController
     @mystery = Mystery.find(params[:mystery_id])
     favorite = current_user.favorites.new(mystery_id: @mystery.id)
     favorite.save
+    # いいねしたユーザーと投稿者が一致していなければ通知を作成
+    unless @mystery.user_id == current_user.id
+      @mystery.create_notification_favorite(current_user)
+    end
   end
 
   def destroy

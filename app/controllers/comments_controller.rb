@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.mystery_id = @mystery.id
     @comment.save
+    # 投稿者とコメント投稿者が一致していなければ通知を作成
+    unless @mystery.id == current_user.id
+      @mystery.create_notification_comment(current_user, @comment.id)
+    end
   end
 
   def update

@@ -3,7 +3,7 @@ class Mystery < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-　has_many :notifications, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   # バリデーション
   validates :title, :discription, :answer, :answer_discription, :difficulty_level, presence: true
@@ -52,10 +52,6 @@ class Mystery < ApplicationRecord
         visited_id: self.user_id,
         action: 'favorite'
       )
-      # 自分の投稿に対するいいねの場合は、通知済みとする
-      # if notification.visitor_id == notification.visited_id
-      #   notification.checked = true
-      # end
       notification.save if notification.valid?
     end
   end
