@@ -10,26 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_113305) do
+ActiveRecord::Schema.define(version: 2022_01_09_070141) do
+
   create_table "chats", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "room_id"
+    t.integer "user_id"
+    t.integer "room_id"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "mystery_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "mystery_id", null: false
+    t.integer "user_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "mystery_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "mystery_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +49,23 @@ ActiveRecord::Schema.define(version: 2021_12_12_113305) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "mystery_id"
+    t.integer "comment_id"
+    t.integer "chat_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.index ["chat_id"], name: "index_notifications_on_chat_id"
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["mystery_id"], name: "index_notifications_on_mystery_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "followed_id"
     t.integer "follower_id"
@@ -61,8 +79,8 @@ ActiveRecord::Schema.define(version: 2021_12_12_113305) do
   end
 
   create_table "user_rooms", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "room_id"
+    t.integer "user_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,4 +103,5 @@ ActiveRecord::Schema.define(version: 2021_12_12_113305) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end
