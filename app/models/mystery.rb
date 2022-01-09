@@ -40,4 +40,39 @@ class Mystery < ApplicationRecord
       return all.order(difficulty_level: :DESC)
     end
   end
+
+  # 新着いいねの通知
+  def create_notification_favorite(current_user)
+    # すでに「いいね」されているか検索
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and mystery_id = ? and action = ? ", current_user.id, self.user_id, self.id, 'favorite'])
+    # いいねされていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        mystery_id: self.id,
+        visited_id: self.user_id,
+        action: 'favorite'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      # if notification.visitor_id == notification.visited_id
+      #   notification.checked = true
+      # end
+      notification.save if notification.valid?
+    end
+  end
+
+  # 新着コメントの通知
+  def create_notification_comment(current_user, comment_id)
+    notification = current_user.active_notifications.new(
+      mystery_id: self.id,
+      comment_id: comment_id,
+      visited_id: self.user_id,
+      action: 'comment'
+    )
+    # 自分の投稿に対するコメントの場合は、通知済みとする
+    # if notification.visitor_id == notification.visited_id
+    #   notification.checked = true
+    # end
+    notification.save if notification.valid?
+  end
+
 end
