@@ -39,4 +39,7 @@ Rails.application.routes.draw do
 
   # DM機能のルーティング
   resources :chats, only: %i[show create destroy]
+
+  # 通知一覧画面へのルーティング
+  get 'notifications' => 'notifications#index', as: 'notifications'
 end

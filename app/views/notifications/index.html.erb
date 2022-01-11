@@ -1,0 +1,47 @@
+<h3 class="header">通知一覧</h3>
+<div>
+  <ul>
+    <% @notifications.each do |notification| %>
+      <% case notification.action %>
+      <% when "favorite" %>
+        <li>
+          <i class="fas fa-heart"></i>
+          <%= link_to user_path(notification.visited) do %>
+            <%= attachment_image_tag notification.visited, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= notification.visitor.name %>
+          <% end %>
+          さんがいいねしました！
+          <%= link_to notification.mystery_id.title mystery_path(notification.mystery_id) %>
+        </li>
+      <% when "comment" %>
+        <li>
+          <i class="fas fa-comments"></i>
+          <%= link_to user_path(notification.visited) do %>
+            <%= attachment_image_tag notification.visited, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= notification.visitor.name %>
+          <% end %>
+          さんがコメントしました！
+          <%= link_to notification.mystery_id.title mystery_path(notification.mystery_id) %>
+        </li>
+      <% when "follow" %>
+        <li>
+          <%= link_to user_path(notification.visited) do %>
+            <%= attachment_image_tag notification.visited, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= notification.visitor.name %>
+          <% end %>
+          さんにフォローされました！
+        </li>
+      <% when "chat" %>
+        <li>
+          <i class="fas fa-envelope"></i>
+          <%= link_to user_path(notification.visited) do %>
+            <%= attachment_image_tag notification.visited, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= notification.visitor.name %>
+          <% end %>
+          さんからメッセージが届きました！
+          <%= link_to "DMへ" chat_path(notification.visited) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
