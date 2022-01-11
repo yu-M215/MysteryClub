@@ -41,5 +41,5 @@ Rails.application.routes.draw do
   resources :chats, only: %i[show create destroy]
 
   # 通知一覧画面へのルーティング
-  get 'notifications' => 'notifications#index', as: 'notifications'
+  resources :notifications, only: %i[index]
 end

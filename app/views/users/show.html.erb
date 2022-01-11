@@ -1,5 +1,6 @@
 <% if @user == current_user %>
   <div class="row mb-3">
+    <%= link_to "通知", notifications_path %>
     <h3 class="header col-2 offset-5">マイページ</h3>
     <a class="mr-3 my-auto" data-toggle="collapse" href="#confcollapse" role="button" aria-expanded="false" aria-controls="confcollapse">
       <i class="fas fa-cogs"></i>
