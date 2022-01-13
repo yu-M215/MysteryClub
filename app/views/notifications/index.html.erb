@@ -1,30 +1,33 @@
-<h3 class="header">通知一覧</h3>
-<div>
-  <ul>
+<h3 class="header mb-3">通知一覧</h3>
+<div class="col-10 offset-1">
+  <ul class="notification-list">
     <% @notifications.each do |notification| %>
       <% case notification.action %>
       <% when "favorite" %>
         <li>
-          <i class="fas fa-heart"></i>
+          <i class="fas fa-heart mr-2"></i>
           <%= link_to user_path(notification.visitor) do %>
             <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
             <%= notification.visitor.name %>
           <% end %>
-          さんがいいねしました！
+          さんがあなたの謎解き（
           <%= link_to notification.mystery.title, mystery_path(notification.mystery_id) %>
+          ）にいいねしました！
         </li>
       <% when "comment" %>
         <li>
-          <i class="fas fa-comments"></i>
+          <i class="fas fa-comments mr-2"></i>
           <%= link_to user_path(notification.visitor) do %>
             <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
             <%= notification.visitor.name %>
           <% end %>
-          さんがコメントしました！
+          さんがあなたの謎解き（
           <%= link_to notification.mystery.title, mystery_path(notification.mystery_id) %>
+          ）にコメントしました！
         </li>
       <% when "follow" %>
         <li>
+          <i class="fas fa-user-plus mr-2"></i>
           <%= link_to user_path(notification.visitor) do %>
             <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
             <%= notification.visitor.name %>
@@ -33,13 +36,14 @@
         </li>
       <% when "chat" %>
         <li>
-          <i class="fas fa-envelope"></i>
+          <i class="fas fa-envelope mr-2"></i>
           <%= link_to user_path(notification.visitor) do %>
             <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
             <%= notification.visitor.name %>
           <% end %>
-          さんからメッセージが届きました！
-          <!--<%= link_to "DMへ", chat_path(notification.visited) %>-->
+          さんから
+          <%= link_to "メッセージ", chat_path(notification.visitor) %>
+          が届きました！
         </li>
       <% end %>
     <% end %>
