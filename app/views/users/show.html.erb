@@ -1,9 +1,15 @@
 <% if @user == current_user %>
   <div class="row mb-3">
-    <%= link_to notifications_path, class:"col-1 offset-4 px-0 my-auto text-right" do %>
-      <%= @notifications_count %>
-      <i class="fas fa-bell"></i>
-    <% end %>
+    <div class="col-1 offset-4 my-auto px-0 text-right">
+      <%= link_to chats_path, class:"mr-2" do %>
+        <%= @chat_notifications.count %>
+        <i class="fas fa-envelope"></i>
+      <% end %>
+      <%= link_to notifications_path do %>
+        <%= @notifications.count %>
+        <i class="fas fa-bell"></i>
+      <% end %>
+    </div>
     <h3 class="header col-2">マイページ</h3>
     <a class="mr-3 my-auto" data-toggle="collapse" href="#confcollapse" role="button" aria-expanded="false" aria-controls="confcollapse">
       <i class="fas fa-cogs"></i>

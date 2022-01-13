@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user == current_user
-      @notifications_count = current_user.passive_notifications.where(checked: false).count
+      @notifications = current_user.passive_notifications.where(checked: false)
+      @chat_notifications = @notifications.where(action: 'chat')
       @mysteries = current_user.mysteries.page(params[:page]).reverse_order
     else
       @mysteries = Mystery.opened.where(user_id: @user.id).page(params[:page]).reverse_order

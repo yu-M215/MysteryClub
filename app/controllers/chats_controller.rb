@@ -2,6 +2,11 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
   before_action :follow_each_other, only: [:show]
 
+  def index
+    @users = current_user.followings
+    @notifications = current_user.passive_notifications.where(checked: false).where(action: 'chat')
+  end
+
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
