@@ -1,6 +1,7 @@
 <% if @user == current_user %>
   <div class="row mb-3">
-    <%= link_to notifications_path, class:"my-auto offset-5" do %>
+    <%= link_to notifications_path, class:"col-1 offset-4 px-0 my-auto text-right" do %>
+      <%= @notifications_count %>
       <i class="fas fa-bell"></i>
     <% end %>
     <h3 class="header col-2">マイページ</h3>

@@ -4,11 +4,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @mysteries = if @user == current_user
-                   current_user.mysteries.page(params[:page]).reverse_order
-                 else
-                   Mystery.opened.where(user_id: @user.id).page(params[:page]).reverse_order
-                 end
+    if @user == current_user
+      @notifications_count = current_user.passive_notifications.where(checked: false).count
+      @mysteries = current_user.mysteries.page(params[:page]).reverse_order
+    else
+      @mysteries = Mystery.opened.where(user_id: @user.id).page(params[:page]).reverse_order
+    end
     respond_to do |format|
       format.html
       format.js
