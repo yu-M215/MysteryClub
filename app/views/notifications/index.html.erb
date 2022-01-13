@@ -1,13 +1,13 @@
 <h3 class="header mb-3">通知一覧</h3>
-<div class="col-10 offset-1">
-  <ul class="notification-list">
+<div class="col-10 offset-1 notification-box py-2">
+  <ul class="notification-list mb-0">
     <% @notifications.each do |notification| %>
       <% case notification.action %>
       <% when "favorite" %>
         <li>
-          <i class="fas fa-heart mr-2"></i>
+          <i class="fas fa-heart"></i>
           <%= link_to user_path(notification.visitor) do %>
-            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle mx-2" %>
             <%= notification.visitor.name %>
           <% end %>
           さんがあなたの謎解き（
@@ -16,9 +16,9 @@
         </li>
       <% when "comment" %>
         <li>
-          <i class="fas fa-comments mr-2"></i>
+          <i class="fas fa-comments"></i>
           <%= link_to user_path(notification.visitor) do %>
-            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle mx-2" %>
             <%= notification.visitor.name %>
           <% end %>
           さんがあなたの謎解き（
@@ -27,18 +27,18 @@
         </li>
       <% when "follow" %>
         <li>
-          <i class="fas fa-user-plus mr-2"></i>
+          <i class="fas fa-user-plus"></i>
           <%= link_to user_path(notification.visitor) do %>
-            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle mx-2" %>
             <%= notification.visitor.name %>
           <% end %>
           さんにフォローされました！
         </li>
       <% when "chat" %>
         <li>
-          <i class="fas fa-envelope mr-2"></i>
+          <i class="fas fa-envelope"></i>
           <%= link_to user_path(notification.visitor) do %>
-            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle" %>
+            <%= attachment_image_tag notification.visitor, :profile_image, size:"40x40", alt:"ProfileImage", fallback:"profile_image.jpg", class:"rounded-circle mx-2" %>
             <%= notification.visitor.name %>
           <% end %>
           さんから
@@ -49,3 +49,5 @@
     <% end %>
   </ul>
 </div>
+
+<%= paginate @notifications %>

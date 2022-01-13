@@ -2,11 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.notification-box {
+  background-color: #fff5ee;
+  border: #ffdab9 5px solid;
+  border-radius: 10px;
+}
+
 .notification-list {
   list-style: none;
 }
 
 .notification-list li {
-  margin-bottom: 1%;
+  margin: 1% 0;
 }
 
+.notification-list li i {
+  width: 20px;
+}
+
+.fa-heart {
+  color: #fa8072;
+}
+
+.fa-comments {
+  color: #6495ed
+}
+
+.fa-user-plus {
+  color: #4682b4;
+}
+
+.fa-envelope {
+  color: #b0c4de;
+}
