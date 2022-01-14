@@ -3,7 +3,7 @@ class ChatsController < ApplicationController
   before_action :follow_each_other, only: [:show]
 
   def index
-    @users = current_user.followings
+    @users = current_user.followings.page(params[:page]).per(10)
     @notifications = current_user.passive_notifications.where(checked: false).where(action: 'chat')
   end
 
