@@ -22,6 +22,11 @@ class Mystery < ApplicationRecord
     Mystery.where(is_opened: true)
   end
 
+  # いいねが多い投稿トップ３を取得
+  def self.favorite_ranking
+    Mystery.opened.left_joins(:favorites).group(:id).order(Arel.sql('COUNT(favorites.id) desc')).limit(3).pluck(:id)
+  end
+
   # 検索フォームに入力された文字列をtitleかdiscriptionに含む投稿を探す
   def self.search_for(keyword)
     Mystery.where('title LIKE ?', "%#{keyword}%").or(Mystery.where('discription LIKE ?', "%#{keyword}%"))
