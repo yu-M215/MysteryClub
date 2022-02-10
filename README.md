@@ -1,5 +1,8 @@
 # MysteryClub
 
+## サイト
+http://ec2-3-113-199-230.ap-northeast-1.compute.amazonaws.com
+
 ## サイト概要
 
 謎解きが好きな人同士で交流することを目的としたSNSです。
