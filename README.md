@@ -3,6 +3,10 @@
 ## サイト
 http://ec2-3-113-199-230.ap-northeast-1.compute.amazonaws.com
 
+## 動画デモ
+https://youtu.be/t_wfOJEeq-I
+※上記リンクをクリックするとYoutubeに飛びます。
+
 ## サイト概要
 
 謎解きが好きな人同士で交流することを目的としたSNSです。
