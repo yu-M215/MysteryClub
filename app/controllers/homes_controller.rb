@@ -7,6 +7,8 @@ class HomesController < ApplicationController
       @first_mystery = Mystery.find(mystery_id[0])
       @second_mystery = Mystery.find(mystery_id[1])
       @third_mystery = Mystery.find(mystery_id[2])
+      @first_favorite = @first_mystery.favorites.count
+      @second_favorite = @second_mystery.favorites.count
     end
   end
 

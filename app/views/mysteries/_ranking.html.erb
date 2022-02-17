@@ -1,0 +1,26 @@
+<div class="card px-0">
+  <%= attachment_image_tag mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= link_to mystery_path(mystery.id) do %>
+        <%= mystery.title %>
+      <% end %>
+    </h5>
+    <p class="card-text" id="difficulty_level_<%= mystery.id %>"></p>
+    <!--難易度の星の表示-->
+    <script>
+    $('#difficulty_level_<%= mystery.id %>').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= mystery.difficulty_level %>,
+    });
+    </script>
+    <span class="favorite-count"><i class="fas fa-heart"></i> <%= mystery.favorites.count %></span>
+    <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= mystery.comments.count %></span>
+    <p class="mt-2 mb-0">by <%= mystery.user.name %>さん</p>
+  </div>
+</div>

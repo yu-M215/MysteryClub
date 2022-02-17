@@ -2,9 +2,9 @@
   <h2 class="header py-2">ようこそ、MysteryClubへ！</h2>
 
   <% unless user_signed_in? %>
-      <p>MysteryClubは謎解き好きのためのSNSです。</br>
-      初めての方は <%= link_to "こちら", new_user_registration_path %> から会員登録してください</br>
-      ＊投稿の詳細を見るにはログインが必要です</p>
+    <p>MysteryClubは謎解き好きのためのSNSです。</br>
+    初めての方は <%= link_to "こちら", new_user_registration_path %> から会員登録してください</br>
+    ＊投稿の詳細を見るにはログインが必要です</p>
   <% end %>
 </div>
 
@@ -12,91 +12,26 @@
 <% unless @mysteries %>
   <div class="row mt-4">
     <div class="col-3 offset-1 mt-5 text-center">
-      <h4 class="second-header"><i class="fas fa-crown"></i> 2位</h4>
-      <div class="card px-0">
-        <%= attachment_image_tag @second_mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to mystery_path(@second_mystery.id) do %>
-              <%= @second_mystery.title %>
-            <% end %>
-          </h5>
-          <p class="card-text" id="difficulty_level_second"></p>
-          <!--難易度の星の表示-->
-          <script>
-          $('#difficulty_level_second').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @second_mystery.difficulty_level %>,
-          });
-          </script>
-          <span class="favorite-count"><i class="fas fa-heart"></i> <%= @second_mystery.favorites.count %></span>
-          <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @second_mystery.comments.count %></span>
-          <p class="mt-2 mb-0">by <%= @second_mystery.user.name %>さん</p>
-        </div>
-      </div>
+      <% if @first_favorite == @second_favorite %>
+        <h4 class="first-header"><i class="fas fa-crown"></i> 1位 <i class="fas fa-crown"></i></h4>
+      <% else %>
+        <h4 class="second-header"><i class="fas fa-crown"></i> 2位</h4>
+      <% end %>
+      <%= render 'mysteries/ranking', mystery: @second_mystery %>
     </div>
     <div class="col-4 text-center">
       <h4 class="first-header"><i class="fas fa-crown"></i> 1位 <i class="fas fa-crown"></i></h4>
-      <div class="card px-0">
-        <%= attachment_image_tag @first_mystery, :image, alt:"Mysteryimage", size:"350x230", fallback: "no_image.jpg", class:"card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to mystery_path(@first_mystery.id) do %>
-              <%= @first_mystery.title %>
-            <% end %>
-          </h5>
-          <p class="card-text" id="difficulty_level_first"></p>
-          <!--難易度の星の表示-->
-          <script>
-          $('#difficulty_level_first').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @first_mystery.difficulty_level %>,
-          });
-          </script>
-          <span class="favorite-count"><i class="fas fa-heart"></i> <%= @first_mystery.favorites.count %></span>
-          <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @first_mystery.comments.count %></span>
-          <p class="mt-2 mb-0">by <%= @first_mystery.user.name %>さん</p>
-        </div>
-      </div>
+      <%= render 'mysteries/ranking', mystery: @first_mystery %>
     </div>
     <div class="col-3 mt-5 text-center">
-      <h4 class="third-header">3位 <i class="fas fa-crown"></i></h4>
-      <div class="card px-0">
-        <%= attachment_image_tag @third_mystery, :image, alt:"Mysteryimage", size:"280x180", fallback: "no_image.jpg", class:"card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to mystery_path(@third_mystery.id) do %>
-              <%= @third_mystery.title %>
-            <% end %>
-          </h5>
-           <p class="card-text" id="difficulty_level_third"></p>
-          <!--難易度の星の表示-->
-          <script>
-          $('#difficulty_level_third').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @third_mystery.difficulty_level %>,
-          });
-          </script>
-          <span class="favorite-count"><i class="fas fa-heart"></i> <%= @third_mystery.favorites.count %></span>
-          <span class="ml-2 comment-count"><i class="fas fa-comments"></i> <%= @third_mystery.comments.count %></span>
-          <p class="mt-2 mb-0">by <%= @third_mystery.user.name %>さん</p>
-        </div>
-      </div>
+      <% if @first_favorite == @third_mystery.favorites.count %>
+        <h4 class="first-header"><i class="fas fa-crown"></i> 1位 <i class="fas fa-crown"></i></h4>
+      <% elsif @second_favorite == @third_mystery.favorites.count %>
+        <h4 class="second-header"><i class="fas fa-crown"></i> 2位</h4>
+      <% else %>
+        <h4 class="third-header">3位 <i class="fas fa-crown"></i></h4>
+      <% end %>
+      <%=render 'mysteries/ranking', mystery: @third_mystery %>
     </div>
   </div>
 <% else %>
