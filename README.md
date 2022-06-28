@@ -6,7 +6,7 @@ http://ec2-3-113-199-230.ap-northeast-1.compute.amazonaws.com
 
 ## 動画デモ
 https://youtu.be/4ZzQ6Kr4uxw
-※リンクをクリックするとYoutubeに飛びます。
+※現在、非公開にしております。
 
 ## サイト概要
 
